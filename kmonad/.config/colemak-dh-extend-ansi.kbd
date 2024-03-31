@@ -1,0 +1,95 @@
+(defcfg
+  ;; ** For Linux **
+  input  (device-file "/dev/input/by-id/usb-ROYUAN_EPOMAKER_TH80_SE-event-kbd")
+  ;; input  (device-file "/dev/input/by-id/usb-Matias_Ergo_Pro_Keyboard-event-kbd")
+  output (uinput-sink "KMonad output")
+
+  ;; ** For Windows **
+  ;; input  (low-level-hook)
+  ;; output (send-event-sink)
+
+  ;; ** For MacOS **
+  ;; input  (iokit-name "my-keyboard-product-string")
+  ;; output (kext)
+
+  fallthrough true
+  allow-cmd true
+)
+
+(defsrc
+  esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv     1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab     q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps    a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft      z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl    lmet lalt           spc            ralt rmet cmp  rctl
+)
+ 
+(defalias
+  ext (layer-toggle extend) ;; Bind 'ext' to the Extend Layer
+  qwe (layer-switch qwerty) ;; Set qwerty as the base layer
+  col (layer-switch colemak-dh) ;; Set colemak as the base layer
+  sym (layer-toggle symbols)
+)
+
+(defalias
+  cpy C-c
+  pst C-v
+  cut C-x
+  udo C-z
+  all C-a
+  fnd C-f
+  dwd C-bspc
+  bk Back
+  fw Forward
+  lpar S-9
+  rpar S-0
+  exc S-1
+  at S-2
+  hsh S-3
+  amp S-7
+  star S-8
+  pct S-5
+  dlr S-4
+  fwsl \
+  chm (cmd-button "/home/pundrew/scripts/ddcutil/toggle_input_source.sh")
+)
+
+(deflayer qwerty
+  esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv     1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab     q    w    e    r    t    y    u    i    o    p    [    ]    \
+  @ext    a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft      z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl    lmet lalt           spc            ralt rmet cmp  rctl
+
+)
+
+(deflayer colemak-dh
+  esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv      1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab      q    w    f    p    b    j    l    u    y    ;    [    ]    \\
+  @ext     a    r    s    t    g    m    n    e    i    o    '    ret
+  lsft       x    c    d    v    z    k    h    ,    .    /    rsft
+  lctl     lmet lalt           spc            ralt rmet _    _
+)
+
+(deflayer extend
+  _        play rewind previoussong nextsong ejectcd refresh brdn brup www mail prog1 prog2
+  _        f1   f2   f3   f4   f5   f6   f7   f8   f9  f10   f11  f12  _
+  @qwe     @sym @bk  @udo @fw  tab  pgup home up   end  menu [  prnt  @chm
+  _        lalt lmet lsft lctl @fnd pgdn lft  down rght bspc  caps return
+  @col       tab @cut  @cpy  @pst  pgdn  esc  del  comp lshft _  _
+  _        _    _              @dwd            _    _    _    _
+)
+
+
+(deflayer symbols
+  _        _    _    _    _    _    _    _    _    _    _    _    _    
+  _        _    _    _    _    _    _    _    _    _    _    _    _    _
+  _        _    grv    @exc    @star    _    _    [  -  ]     @at    _    _   _
+  _        _    _    _    @pct    _    @dlr    @lpar    =    @rpar    @amp    _    _ 
+  _        _    _    _    _    _    @hsh    @fwsl    _    _    _    _ 
+  _        _    _              _              _    _    _    _
+)
+

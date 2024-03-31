@@ -1,0 +1,29 @@
+[Desktop Entry]
+DefaultProfile=Profile 1.profile
+
+[General]
+ConfigVersion=1
+
+[KFileDialog Settings]
+Recent Files[$e]=bnbsprite.png,file:$HOME/Downloads/cool-geometric-triangular-figure-neon-laser-light-great-backgrounds-wallpapers_181624-9331.avif,file:$HOME/Pictures/bnbsprite.png
+Recent URLs[$e]=file:$HOME/Pictures/,file:$HOME/Downloads/
+detailViewIconSize=16
+
+[MainWindow]
+1920x1080 screen: Height=1008
+1920x1080 screen: Width=930
+1920x1080 screen: Window-Maximized=true
+2 screens: Height=1040
+2 screens: Width=930
+2 screens: Window-Maximized=true
+2 screens: XPosition=438
+2 screens: YPosition=323
+640x480 screen: Height=448
+640x480 screen: Width=640
+DisplayPort-0 HDMI-A-0=HDMI-A-0
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAQAAAAAAAAEYAAAD8vwCAAAAAvsAAAAiAFEAdQBpAGMAawBDAG8AbQBtAGEAbgBkAHMARABvAGMAawAAAAAeAAAD8gAAAWQA////+wAAABwAUwBTAEgATQBhAG4AYQBnAGUAcgBEAG8AYwBrAAAAAAD/////AAABAgD///8AAAeAAAAEHQAAAAQAAAAEAAAACAAAAAj8AAAAAQAAAAIAAAACAAAAFgBtAGEAaQBuAFQAbwBvAGwAQgBhAHIAAAAAAP////8AAAAAAAAAAAAAABwAcwBlAHMAcwBpAG8AbgBUAG8AbwBsAGIAYQByAAAAAAD/////AAAAAAAAAAA=
+ToolBarsMovable=Disabled
+
+[UiSettings]
+ColorScheme=Sweet

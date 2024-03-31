@@ -1,0 +1,140 @@
+[$Version]
+update_info=kwinrules.upd:replace-placement-string-to-enum,kwinrules.upd:use-virtual-desktop-ids
+
+[1]
+Description=Window settings for io.github.jorchube.monitorets
+aboverule=4
+title=monitorets
+types=1
+wmclass=\sio.github.jorchube.monitorets
+wmclasscomplete=true
+wmclassmatch=1
+
+[148d4434-0ff4-45e7-aebe-abce130ccdcf]
+Description=Settings for systemsettings systemsettings
+desktops=02b8a38c-0d3c-4380-83ac-0398e1568c7e
+desktopsrule=2
+wmclass=systemsettings systemsettings
+wmclasscomplete=true
+wmclassmatch=1
+
+[2]
+Description=bismuth tweak
+minsize=1,1
+minsizerule=2
+types=1
+
+[2793ab5e-19ee-4abb-ab41-3228af29fe1e]
+Description=Settings for io.github.jorchube.monitorets
+desktops=02b8a38c-0d3c-4380-83ac-0398e1568c7e
+desktopsrule=2
+wmclass=io.github.jorchube.monitorets
+wmclasscomplete=true
+wmclassmatch=1
+
+[3]
+Description=Settings for discord
+desktops=49bdae70-5657-4b1d-a3c8-ce5e2bad85fa
+desktopsrule=2
+wmclass=discord discord
+wmclasscomplete=true
+wmclassmatch=1
+
+[4]
+Description=Settings for dolphin org.kde.dolphin
+desktops=02b8a38c-0d3c-4380-83ac-0398e1568c7e
+desktopsrule=2
+wmclass=dolphin org.kde.dolphin
+wmclasscomplete=true
+wmclassmatch=1
+
+[4bde4a58-99e8-4347-b829-29a747449374]
+Description=Settings for io.github.jorchube.monitorets
+desktops=02b8a38c-0d3c-4380-83ac-0398e1568c7e
+desktopsrule=2
+wmclass=io.github.jorchube.monitorets
+wmclasscomplete=true
+wmclassmatch=1
+
+[5]
+Description=Settings for corectl
+desktops=02b8a38c-0d3c-4380-83ac-0398e1568c7e
+desktopsrule=2
+wmclass=corectrl corectrl
+wmclasscomplete=true
+wmclassmatch=1
+
+[6]
+Description=Settings for spotify spotify
+desktops=49bdae70-5657-4b1d-a3c8-ce5e2bad85fa
+desktopsrule=2
+wmclass=spotify spotify
+wmclasscomplete=true
+wmclassmatch=1
+
+[7]
+Description=Settings for io.github.jorchube.monitorets
+desktops=02b8a38c-0d3c-4380-83ac-0398e1568c7e
+desktopsrule=2
+wmclass=io.github.jorchube.monitorets
+wmclasscomplete=true
+wmclassmatch=1
+
+[8]
+Description=Settings for systemsettings systemsettings
+desktops=02b8a38c-0d3c-4380-83ac-0398e1568c7e
+desktopsrule=2
+wmclass=systemsettings systemsettings
+wmclasscomplete=true
+wmclassmatch=1
+
+[983b997b-495b-48be-bf4d-f7d9bfbd55f8]
+Description=bismuth tweak
+minsizerule=2
+types=1
+
+[General]
+count=8
+rules=1,2,3,4,5,6,7,8
+
+[af99ca93-8cb4-492b-b1f5-83f8cdf015ef]
+Description=Window settings for io.github.jorchube.monitorets
+above=true
+aboverule=4
+title=monitorets
+types=1
+wmclass=\sio.github.jorchube.monitorets
+wmclasscomplete=true
+wmclassmatch=1
+
+[ce0f7076-143e-4efa-babf-eb926f699e9b]
+Description=Settings for spotify spotify
+desktops=49bdae70-5657-4b1d-a3c8-ce5e2bad85fa
+desktopsrule=2
+wmclass=spotify spotify
+wmclasscomplete=true
+wmclassmatch=1
+
+[e31655d0-a78f-4550-b60b-afd1be568a49]
+Description=Settings for corectl
+desktops=02b8a38c-0d3c-4380-83ac-0398e1568c7e
+desktopsrule=2
+wmclass=corectrl corectrl
+wmclasscomplete=true
+wmclassmatch=1
+
+[f6dc10b0-626b-47a5-a24e-70ff3114c7a1]
+Description=Settings for dolphin org.kde.dolphin
+desktops=02b8a38c-0d3c-4380-83ac-0398e1568c7e
+desktopsrule=2
+wmclass=dolphin org.kde.dolphin
+wmclasscomplete=true
+wmclassmatch=1
+
+[fadb90fa-6067-4e7c-93c3-8f9fb38f46d2]
+Description=Settings for discord
+desktops=49bdae70-5657-4b1d-a3c8-ce5e2bad85fa
+desktopsrule=2
+wmclass=discord discord
+wmclasscomplete=true
+wmclassmatch=1

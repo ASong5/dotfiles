@@ -52,7 +52,7 @@
   pct S-5
   dlr S-4
   fwsl \
-  chm (cmd-button "/home/pundrew/scripts/ddcutil/toggle_input_source.sh")
+  chm (cmd-button "/home/pundrew/scripts/toggle_input_source.sh")
 )
 
 (deflayer qwerty

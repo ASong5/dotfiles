@@ -33,10 +33,15 @@
 )
 
 (defalias
+  lalt (sticky-key 500 lalt)
+  lmet (sticky-key 500 lmet)
+  lsft (sticky-key 500 lsft)
+  lctl (sticky-key 500 lctl)
   cpy C-c
   pst C-v
   cut C-x
   udo C-z
+  rdo C-y
   all C-a
   fnd C-f
   dwd C-bspc
@@ -78,11 +83,10 @@
   _        play rewind previoussong nextsong ejectcd refresh brdn brup www mail prog1 prog2
   _        f1   f2   f3   f4   f5   f6   f7   f8   f9  f10   f11  f12  _
   @qwe     @sym @bk  @udo @fw  tab  pgup home up   end  menu [  prnt  @chm
-  _        lalt lmet lsft lctl @fnd pgdn lft  down rght bspc  caps return
+  _        @lalt @lmet @lsft @lctl @rdo pgdn lft  down rght bspc  caps return
   @col       tab @cut  @cpy  @pst  pgdn  esc  del  comp lshft _  _
   _        _    _              @dwd            _    _    _    _
 )
-
 
 (deflayer symbols
   _        _    _    _    _    _    _    _    _    _    _    _    _    

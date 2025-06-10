@@ -27,6 +27,11 @@ vim.g.mapleader = " "
 -- allow C-backspace to delete word
 vim.api.nvim_set_keymap('i', '<C-H>', '<C-W>', {noremap = true, silent = true})
 
+-- save/exit/save and exit keybinds
+vim.keymap.set("n", "<leader>ww", ":wa<CR>")
+vim.keymap.set("n", "<leader>q", ":qa<CR>")
+vim.keymap.set("n", "<leader>wq", ":wqa<CR>")
+
 -- system clipboard copy
 vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
@@ -41,8 +46,8 @@ vim.keymap.set("v", "<PageDown>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<PageUp>", ":m '<-2<CR>gv=gv")
 
 -- keeps cursor in middle when going up/down a page or tabbing through search term
-vim.keymap.set("n", "<s-up>", "<s-up>zz")
-vim.keymap.set("n", "<S-Down>", "<S-Down>zz")
+vim.keymap.set("n", "<S-Up>", "<C-u>zz")
+vim.keymap.set("n", "<S-Down>", "<C-d>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "n", "Nzzzv")
 

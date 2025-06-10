@@ -1,3 +1,5 @@
+neofetch
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -118,18 +120,18 @@ if ! shopt -oq posix; then
 fi
 source /usr/share/doc/fzf/examples/key-bindings.bash
 source /usr/share/bash-completion/completions/fzf
+bind 'TAB:menu-complete'
+bind 'set show-all-if-ambiguous on'
 # env variable
+export EDITOR=nvim
 export WAYLAND_DISPLAY=wayland-0
 export FZF_COMPLETION_TRIGGER=**
-export TERM=xterm-256color
 export FZF_CTRL_T_COMMAND="fd . $HOME --hidden"
 export FZF_CTRL_R_OPTS="
   --preview 'echo {}' --preview-window up:3:hidden:wrap
   --bind 'ctrl-/:toggle-preview'
   --bind 'ctrl-y:execute-silent(echo -n {2..} | wlcopy)+abort'
   --color header:italic"
-export SDL_VIDEODRIVER=wayland
-export MOZ_ENABLE_WAYLAND=1
 export FZF_COMPLETION_OPTS="--border --info=inline"
 
 go () 

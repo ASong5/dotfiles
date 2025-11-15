@@ -18,16 +18,17 @@ return {
 				local is_inside_work_tree = {}
 
 				local cwd = utils.buffer_dir()
-                local root_dir = ""
-                if is_inside_work_tree[cwd] == nil then
-                    root_dir = vim.fn.system("git -C " .. cwd  .. " -c core.symlinks=false rev-parse --show-toplevel")
+				local root_dir = ""
+				if is_inside_work_tree[cwd] == nil then
+					root_dir = vim.fn.system("git -C " .. cwd .. " -c core.symlinks=false rev-parse --show-toplevel")
 					is_inside_work_tree[cwd] = vim.v.shell_error == 0
 				end
 
 				if is_inside_work_tree[cwd] then
-					builtin.git_files({cwd = string.gsub(root_dir, "\n", "")})
+					-- builtin.git_files({cwd = string.gsub(root_dir, "\n", "")})
+					builtin.git_files({ cwd = utils.buffer_dir() })
 				else
-					builtin.find_files({cwd = utils.buffer_dir()})
+					builtin.find_files({ cwd = utils.buffer_dir() })
 				end
 			end
 
@@ -59,6 +60,18 @@ return {
 			vim.keymap.set("n", "<leader>fg", function()
 				builtin.live_grep({ cwd = utils.buffer_dir() })
 			end, {})
+			vim.keymap.set("n", "<leader>fb", builtin.buffers)
+			vim.keymap.set("n", "<leader>fs", function()
+				vim.ui.select(
+					{ "function", "variable", "object", "package", "string", "array", "constant", "boolean" },
+					{
+						prompt = "Select a symbol type: ",
+					},
+					function(choice)
+						builtin.lsp_document_symbols({ symbols = choice })
+					end
+				)
+			end)
 			vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
 			require("telescope").load_extension("undo")
 		end,

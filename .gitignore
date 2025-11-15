@@ -1,0 +1,8 @@
+**/credentials.properties
+nvim/.config/nvim/tree-sitter-*
+nvim/.config/nvim/venv/
+nvim/.config/nvim/parser/
+nvim/.config/nvim/nohup.out
+*.swp
+*.bak
+nohup.out

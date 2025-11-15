@@ -86,17 +86,17 @@ Color=216,222,233
 Color=216,222,233
 
 [Foreground]
-Color=255,11,255
+Color=65,170,68
 RandomHueRange=360
 RandomSaturationRange=100
 
 [ForegroundFaint]
-Color=255,11,255
+Color=247,67,232
 RandomHueRange=360
 RandomSaturationRange=100
 
 [ForegroundIntense]
-Color=255,11,255
+Color=255,85,0
 RandomHueRange=360
 RandomSaturationRange=100
 
@@ -106,7 +106,7 @@ Blur=true
 ColorRandomization=false
 Description=Nordic
 FillStyle=Tile
-Opacity=0.9
+Opacity=0.5
 Wallpaper=
 WallpaperFlipType=NoFlip
 WallpaperOpacity=1

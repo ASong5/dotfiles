@@ -1,0 +1,171 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Ubuntu Nerd Font";
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: white;
+}
+
+#window {
+    font-weight: bold;
+    font-family: "Ubuntu";
+}
+/*
+#workspaces {
+    padding: 0 5px;
+}
+*/
+
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: white;
+    border-top: 2px solid transparent;
+}
+
+#workspaces button#niri-workspace-Main label{
+    color: orange;
+    font-size: 30px;
+}
+
+#workspaces button#niri-workspace-Dev label{
+    color: green;
+    font-size: 30px;
+}
+
+#workspaces button#niri-workspace-Games label{
+    color: #66dc69;
+    font-size: 25px;
+}
+
+#workspaces button#niri-workspace-Web\ Browsing label {
+    color: #f39c0f;
+    font-size: 20px;
+}
+
+#workspaces button#niri-workspace-Streaming\ and\ Recording label {
+    color: red;
+    font-size: 18px;
+}
+
+#workspaces button#niri-workspace-Chat label {
+    color: #ff69b4;
+    font-size: 25px;
+}
+
+#workspaces button#niri-workspace-scratch label {
+    color: red;
+    font-size: 25px;
+}
+
+#workspaces button#niri-workspace-SMTK label {
+    color: #3498db;
+    font-size: 15px;
+}
+
+#workspaces button#niri-workspace-3 {
+  background: None;
+  border: None;
+  font-size: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+#workspaces button#niri-workspace-5 {
+  background: None;
+  border: None;
+  font-size: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+#workspaces button#niri-workspace-4 {
+  background: None;
+  border: None;
+  font-size: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+#workspaces button.focused {
+    color: #c9545d;
+    border-top: 2px solid #c9545d;
+}
+
+#mode {
+    background: #64727D;
+    border-bottom: 3px solid white;
+}
+
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
+    padding: 0 3px;
+    margin: 0 2px;
+}
+
+#clock {
+    font-weight: bold;
+}
+
+#battery {
+}
+
+#battery icon {
+    color: red;
+}
+
+#battery.charging {
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}
+
+#battery.warning:not(.charging) {
+    color: white;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#cpu {
+}
+
+#memory {
+}
+
+#network {
+}
+
+#network.disconnected {
+    background: #f53c3c;
+}
+
+#pulseaudio {
+}
+
+#pulseaudio.muted {
+}
+
+#custom-spotify {
+    padding: 0 10px;
+    margin: 0 4px;
+    background-color: #1DB954;
+    color: black;
+}
+
+#tray {
+}
+

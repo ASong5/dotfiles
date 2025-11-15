@@ -10,16 +10,21 @@ case $- in
       *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
 
-# append to the history file, don't overwrite it
+# Keep large history
+HISTSIZE=100000
+HISTFILESIZE=1000000
+
+# Append instead of overwriting
 shopt -s histappend
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(0) for more options
+# Deduplicate in-memory commands
+HISTCONTROL=ignoreboth:erasedups
+
+# Merge history across multiple terminals
+PROMPT_COMMAND='history -a'
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -94,6 +99,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias ls='eza'
+alias sleep="systemctl suspend --now" 
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -124,7 +130,7 @@ bind 'TAB:menu-complete'
 bind 'set show-all-if-ambiguous on'
 # env variable
 export EDITOR=nvim
-export WAYLAND_DISPLAY=wayland-0
+# export WAYLAND_DISPLAY=wayland-0
 export FZF_COMPLETION_TRIGGER=**
 export FZF_CTRL_T_COMMAND="fd . $HOME --hidden"
 export FZF_CTRL_R_OPTS="
@@ -158,3 +164,11 @@ go ()
 
 
 
+. "$HOME/.cargo/env"
+
+# Created by `pipx` on 2025-10-02 13:00:40
+export PATH="$PATH:/home/pundrew/.local/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

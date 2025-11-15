@@ -1,0 +1,39 @@
+sort=-time
+max-history=15
+layer=overlay
+background-color=#2e3440
+progress-color=#FFA500
+width=300
+height=110
+border-size=2
+border-color=#88c0d0
+border-radius=15
+icons=1
+max-icon-size=64
+font=JetBrainsmono Nerd Font 10
+text-color=#ffffff
+default-timeout=0
+ignore-timeout=1
+output=DP-1
+anchor=top-center
+on-notify=exec /home/pundrew/.config/mako/scripts/mako-progress-updater.sh "${id}"
+
+[app-name=Spotify]
+output=DP-1
+format=Now Playing:\nTitle: %s\nAlbum: %b
+progress-color=#1ed760
+background-color=#FFA500
+text-color=#000000
+
+[app-name=runelite-build-progress]
+on-button-left=exec konsole -e "tail -f /tmp/runelite-build-progress.log"
+
+[urgency=low]
+border-color=#cccccc
+
+[urgency=normal]
+border-color=#d08770
+
+[urgency=high]
+border-color=#bf616a
+default-timeout=0

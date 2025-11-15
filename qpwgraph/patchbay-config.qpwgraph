@@ -1,0 +1,230 @@
+<!DOCTYPE patchbay>
+<patchbay name="patchbay-config" version="0.6.1">
+ <items>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="speech-dispatcher-dummy:output_FR" node="speech-dispatcher-dummy"/>
+   <input port="PortAudio:in_59" node="PortAudio"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FR" node="Easy Effects Source"/>
+   <input port="ALC892 Analog:playback_FR" node="Starship/Matisse HD Audio Controller Analog Stereo"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="spectrum:output_FR" node="Spectrum"/>
+   <input port="output_level:input_FR" node="Output Level Meter"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="spectrum:output_FR" node="Spectrum-1"/>
+   <input port="output_level:input_FR" node="Output Level Meter-1"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Blue Snowball:capture_MONO" node="Blue Snowball Mono"/>
+   <input port="rnnoise:input_FR" node="Noise Reduction"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FL" node="Easy Effects Source"/>
+   <input port="PortAudio:in_32" node="PortAudio"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Firefox:output_FL" node="Firefox-1"/>
+   <input port="ALC892 Analog:playback_FL" node="Starship/Matisse HD Audio Controller Analog Stereo"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="equalizer:output_FR" node="Equalizer"/>
+   <input port="compressor:input_FR" node="Compressor"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="PortAudio:out_47" node="PortAudio"/>
+   <input port="ALC892 Analog:playback_FR" node="Starship/Matisse HD Audio Controller Analog Stereo"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="PortAudio:out_53" node="PortAudio"/>
+   <input port="ALC892 Analog:playback_FR" node="Starship/Matisse HD Audio Controller Analog Stereo"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="speech-dispatcher-dummy:output_FR" node="speech-dispatcher-dummy"/>
+   <input port="PortAudio:in_37" node="PortAudio"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="output_level:output_FR" node="Output Level Meter"/>
+   <input port="ALC892 Analog:playback_FR" node="Starship/Matisse HD Audio Controller Analog Stereo"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FL" node="Easy Effects Source"/>
+   <input port="ALC892 Analog:playback_FL" node="Starship/Matisse HD Audio Controller Analog Stereo"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="rnnoise:output_FL" node="Noise Reduction"/>
+   <input port="gate:input_FL" node="Gate"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="PortAudio:out_25" node="PortAudio"/>
+   <input port="Easy Effects Sink:playback_FR" node="Easy Effects Sink"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="speech-dispatcher-dummy:output_FL" node="speech-dispatcher-dummy"/>
+   <input port="PortAudio:in_36" node="PortAudio"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FR" node="Easy Effects Source"/>
+   <input port="MicMonitor:playback_FR" node="MicMonitor"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="PortAudio:out_46" node="PortAudio"/>
+   <input port="ALC892 Analog:playback_FL" node="Starship/Matisse HD Audio Controller Analog Stereo"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FR" node="Easy Effects Source"/>
+   <input port="OBS:input_FR" node="OBS-1"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="output_level:output_FL" node="Output Level Meter"/>
+   <input port="ALC892 Analog:playback_FL" node="Starship/Matisse HD Audio Controller Analog Stereo"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FR" node="Easy Effects Source"/>
+   <input port="PortAudio:in_47" node="PortAudio"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="MicMonitor:monitor_FR" node="MicMonitor"/>
+   <input port="ALC892 Analog:playback_FR" node="Starship/Matisse HD Audio Controller Analog Stereo"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FL" node="Easy Effects Source"/>
+   <input port="PortAudio:in_26" node="PortAudio"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="PortAudio:out_40" node="PortAudio"/>
+   <input port="ALC892 Analog:playback_FL" node="Starship/Matisse HD Audio Controller Analog Stereo"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="output_level:output_FL" node="Output Level Meter-1"/>
+   <input port="Easy Effects Source:input_FL" node="Easy Effects Source"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="compressor:output_FR" node="Compressor"/>
+   <input port="reverb:input_FR" node="Reverberation"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Blue Snowball:capture_MONO" node="Blue Snowball Mono"/>
+   <input port="rnnoise:input_FL" node="Noise Reduction"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="spectrum:output_FL" node="Spectrum"/>
+   <input port="output_level:input_FL" node="Output Level Meter"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FL" node="Easy Effects Source"/>
+   <input port="PortAudio:in_46" node="PortAudio"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FR" node="Easy Effects Source"/>
+   <input port="PortAudio:in_20" node="PortAudio"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FL" node="Easy Effects Source"/>
+   <input port="PortAudio:in_19" node="PortAudio"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="spectrum:output_FL" node="Spectrum-1"/>
+   <input port="output_level:input_FL" node="Output Level Meter-1"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="gate:output_FL" node="Gate"/>
+   <input port="equalizer:input_FL" node="Equalizer"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FL" node="Easy Effects Source"/>
+   <input port="PortAudio:in_36" node="PortAudio"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FL" node="Easy Effects Source"/>
+   <input port="WEBRTC VoiceEngine:input_FL" node="WEBRTC VoiceEngine"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FR" node="Easy Effects Source"/>
+   <input port="WEBRTC VoiceEngine:input_FR" node="WEBRTC VoiceEngine"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FL" node="Easy Effects Source"/>
+   <input port="OBS:input_FL" node="OBS-1"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="PortAudio:out_52" node="PortAudio"/>
+   <input port="ALC892 Analog:playback_FL" node="Starship/Matisse HD Audio Controller Analog Stereo"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FR" node="Easy Effects Source"/>
+   <input port="Firefox:input_FR" node="Firefox"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FL" node="Easy Effects Source"/>
+   <input port="Firefox:input_FL" node="Firefox"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FR" node="Easy Effects Source"/>
+   <input port="PortAudio:in_27" node="PortAudio"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="rnnoise:output_FR" node="Noise Reduction"/>
+   <input port="gate:input_FR" node="Gate"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Firefox:output_FR" node="Firefox"/>
+   <input port="ALC892 Analog:playback_FR" node="Starship/Matisse HD Audio Controller Analog Stereo"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="gate:output_FR" node="Gate"/>
+   <input port="equalizer:input_FR" node="Equalizer"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FR" node="Easy Effects Source"/>
+   <input port="PortAudio:in_37" node="PortAudio"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Firefox:output_FR" node="Firefox-1"/>
+   <input port="ALC892 Analog:playback_FR" node="Starship/Matisse HD Audio Controller Analog Stereo"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="MicMonitor:monitor_FL" node="MicMonitor"/>
+   <input port="ALC892 Analog:playback_FL" node="Starship/Matisse HD Audio Controller Analog Stereo"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FR" node="Easy Effects Source"/>
+   <input port="PortAudio:in_33" node="PortAudio"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Firefox:output_FL" node="Firefox"/>
+   <input port="ALC892 Analog:playback_FL" node="Starship/Matisse HD Audio Controller Analog Stereo"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="output_level:output_FR" node="Output Level Meter-1"/>
+   <input port="Easy Effects Source:input_FR" node="Easy Effects Source"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="compressor:output_FL" node="Compressor"/>
+   <input port="reverb:input_FL" node="Reverberation"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="PortAudio:out_41" node="PortAudio"/>
+   <input port="ALC892 Analog:playback_FR" node="Starship/Matisse HD Audio Controller Analog Stereo"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="PortAudio:out_24" node="PortAudio"/>
+   <input port="Easy Effects Sink:playback_FL" node="Easy Effects Sink"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="equalizer:output_FL" node="Equalizer"/>
+   <input port="compressor:input_FL" node="Compressor"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="Easy Effects Source:capture_FL" node="Easy Effects Source"/>
+   <input port="MicMonitor:playback_FL" node="MicMonitor"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output port="speech-dispatcher-dummy:output_FL" node="speech-dispatcher-dummy"/>
+   <input port="PortAudio:in_58" node="PortAudio"/>
+  </item>
+ </items>
+</patchbay>
+

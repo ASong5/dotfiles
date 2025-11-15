@@ -1,6 +1,9 @@
 [Appearance]
+AntiAliasFonts=true
+BoldIntense=true
 ColorScheme=Nordic
-Font=Hack Nerd Font,12,-1,5,50,0,0,0,0,0
+Font=JetBrainsMono Nerd Font,12,-1,5,75,0,0,0,0,0,Bold
+UseFontLineChararacters=false
 
 [Cursor Options]
 CursorShape=0

@@ -31,6 +31,10 @@ input {
     }
 }
 
+output "eDP-1" {
+    mode "1920x1080@100.003"
+}
+
 output "DP-1" {
     mode "2560x1440"
     scale 1

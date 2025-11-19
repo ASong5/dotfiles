@@ -1,21 +1,15 @@
 // Named workspaces
 workspace "Main"
 workspace "Web Browsing" {
-    open-on-output "HDMI-A-1"
 }
 workspace "Dev"
 workspace "Chat" {
-    open-on-output "DP-2"
 }
 workspace "Streaming and Recording" {
-    open-on-output "HDMI-A-1"
 }
 workspace "Games" {
-    open-on-output "DP-2"
 }
 workspace "SMTK" {
-    open-on-output "DP-2"
 }
 workspace "scratch" {
-    open-on-output "DP-2"
 }

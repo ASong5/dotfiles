@@ -27,6 +27,10 @@ vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- change tabs
+vim.keymap.set("n", "<Tab>", "<Cmd>tabnext<CR>")
+vim.keymap.set("n", "<S-Tab>", "<Cmd>tabprevious<CR>")
+
 -- unmap shift+left/right to avoid redundancy with the native remaps below and to force myself to use more mnemonic binds
 vim.keymap.set("n", "<C-Left>", "<Nop>", { noremap = true })
 vim.keymap.set("n", "<C-Right>", "<Nop>", { noremap = true })

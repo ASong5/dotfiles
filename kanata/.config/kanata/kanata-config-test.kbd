@@ -1,0 +1,114 @@
+(defcfg
+    log-layer-changes no
+)
+
+(defsrc
+  esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv     1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab     q    w    e    r    t    y    u    i    o    p    [    ]   \
+  caps    a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft      z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl    lmet lalt           spc            ralt rmet cmp  rctl
+)
+ 
+(defalias
+  sym (layer-toggle symbols)
+  ext (tap-hold 200 115 (one-shot 500 @sym) (layer-toggle extend))
+  qwe (layer-switch qwerty) ;; Set qwerty as the base layer
+  gal (layer-switch gallium-v2) ;; Set gallium-v2 as the base layer
+  col (layer-switch colemak-dh) ;; Set colemak as the base layer
+)
+
+(defalias
+  lalt (one-shot 500 lalt)
+  lmet (one-shot 500 lmet)
+  lsft (one-shot 500 lsft)
+  lctl (one-shot 500 lctl)
+  term M-tab
+  tmux C-/
+  stngs M-S-q
+  cpy C-c
+  pst C-v
+  cut C-x
+  udo C-z
+  rdo C-y
+  all C-a
+  fnd C-f
+  dwd C-bspc
+  bk BrowserBack
+  fw BrowserForward
+)
+
+(defalias
+    tild S-grv
+    lpar S-9
+    star S-8
+    pct S-5
+    dlr S-4
+    fwsl \
+    pipe S-\
+    qstn S-/
+    caret S-6
+    exc S-1
+    at S-2
+    hsh S-3
+    amp S-7
+    rpar S-0
+    crl[ S-[ 
+    crl] S-]
+    dbqt S-'
+    uscr S--
+)
+
+(defalias
+  ¯ (unicode ¯)
+  ツ (unicode ツ)
+  _ (unicode _)
+  shrug (macro @¯ \ @_ @lpar @ツ @rpar @_ / @¯)
+)
+
+(deflayer qwerty
+  esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv     1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab     q    w    e    r    t    y    u    i    o    p    [    ]   \
+  @ext    a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft      z    x    c    v    b    n    m    ,    .    rsft    /
+  lctl    lmet lalt           spc            ralt rmet cmp  rctl
+
+)
+
+(deflayer colemak-dh
+  esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv      1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab      q    w    f    p    b    j    l    u    y    ;    [    ]    \
+  @ext     a    r    s    t    g    m    n    e    i    o    '    ret
+  lsft     x    c    d    v    z    k    h    ,    .   rsft  /
+  lctl     lmet lalt           spc            ralt rmet  _    _
+)
+
+(deflayer gallium-v2
+  esc     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv      1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab      q    l    d    c    b    j    f    o    u    '    [    ]    \
+  @ext     n    r    t    s    g    y    h    a    e    i    ;    ret
+  lsft     x    v    m    w    z    k    p    ,    .  rsft  /
+  lctl     lmet lalt           spc            ralt rmet  _    _
+)
+
+(deflayer extend
+  _        _ _ prev next _ _ brdn brup _ mail _ _
+  _        f1   f2   f3   f4   f5   f6   f7   f8   f9  f10   f11  f12 _ 
+  @gal     del  @bk  @fw  @udo  @term  pgup home  up  end  @stngs  [  ]  \
+  _        @lalt @lmet @lsft @lctl @tmux pgdn lft  down rght bspc caps  return
+  @col     _  @cut  @cpy  @pst  @rdo  esc  tab  comp rpt-any _  _
+  _        _    @qwe              @dwd            _    _    _    _
+)
+
+(deflayer symbols
+  _        _    _    _    _    _    _    _    _    _    _    _    _    
+  _        _    _    _    _    _    _    _    _    _    _    _    _    _
+  _        @shrug    _    grv    @star    @caret    @exc    [  -  ]     @at   _     _   _
+  _        _    _    _    @pct    @dlr    @qstn    @lpar    +    @rpar    @amp   '   @dbqt 
+  _        _    _  @tild    @pipe    _    @hsh    @crl[   =    @crl]   /  @fwsl
+  _        _    _              @uscr              _    _    _    _
+)

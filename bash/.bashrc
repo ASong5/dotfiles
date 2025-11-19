@@ -6,10 +6,9 @@ neofetch
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+*i*) ;;
+*) return ;;
 esac
-
 
 # Keep large history
 HISTSIZE=100000
@@ -44,7 +43,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+xterm-color | *-256color) color_prompt=yes ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -54,12 +53,12 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+        # We have color support; assume it's compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
     else
-	color_prompt=
+        color_prompt=
     fi
 fi
 
@@ -72,11 +71,10 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
+xterm* | rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
-*)
-    ;;
+*) ;;
 esac
 
 # enable color support of ls and also add handy aliases
@@ -99,7 +97,10 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias ls='eza'
-alias sleep="systemctl suspend --now" 
+alias sleep="systemctl suspend --now"
+alias e="nvim"
+alias ef='nvim "$(fzf -m --preview='\''batcat --color=always {}'\'')"'
+alias bat=batcat
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -118,11 +119,11 @@ fi
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
 source /usr/share/doc/fzf/examples/key-bindings.bash
 source /usr/share/bash-completion/completions/fzf
@@ -130,9 +131,10 @@ bind 'TAB:menu-complete'
 bind 'set show-all-if-ambiguous on'
 # env variable
 export EDITOR=nvim
-# export WAYLAND_DISPLAY=wayland-0
 export FZF_COMPLETION_TRIGGER=**
-export FZF_CTRL_T_COMMAND="fd . $HOME --hidden"
+export FZF_DEFAULT_COMMAND="fd . ~ --hidden -E 'wine' -E 'dosdevices' -E 'drive_c' -E 'node_modules'"
+export FZF_CTRL_T_COMMAND="fd . --hidden -E 'wine' -E 'dosdevices' -E 'drive_c' -E 'node_modules'"  
+export FZF_ALT_C_COMMAND="fd -t d --hidden -E 'wine' -E 'dosdevices' -E 'drive_c' -E 'node_modules'"
 export FZF_CTRL_R_OPTS="
   --preview 'echo {}' --preview-window up:3:hidden:wrap
   --bind 'ctrl-/:toggle-preview'
@@ -140,29 +142,41 @@ export FZF_CTRL_R_OPTS="
   --color header:italic"
 export FZF_COMPLETION_OPTS="--border --info=inline"
 
-go () 
-{ 
+go() {
     if [ -n "$1" ]; then
-        if gtk-launch "$1" &> /dev/null; then
-            :;
+        if gtk-launch "$1" &>/dev/null; then
+            :
         else
-            app_id=$(flatpak list --columns=application | grep -i $1);
+            app_id=$(flatpak list --columns=application | grep -i $1)
             if [ -n "$app_id" ]; then
                 if flatpak run "$app_id"; then
-                    :;
-                fi;
+                    :
+                fi
             else
-                echo "Could not find '$1'";
-            fi;
-        fi;
+                echo "Could not find '$1'"
+            fi
+        fi
     else
-        echo "Supply the executible name";
+        echo "Supply the executible name"
     fi
 }
+ 
+eval "$(zoxide init --cmd cd bash)"
+__zoxide_cd_original="$(declare -f __zoxide_z)"
 
-
-
-
+cd() {
+    # If argument matches "<number>.."
+    if [[ $1 =~ ^([0-9]+)\.\.$ ]]; then
+        local n=${BASH_REMATCH[1]}
+        local path=""
+        for ((i = 0; i < n; i++)); do
+            path+="../"
+        done
+        __zoxide_z "$path"
+    else
+        __zoxide_z "$@"
+    fi
+}
 
 . "$HOME/.cargo/env"
 
@@ -170,5 +184,6 @@ go ()
 export PATH="$PATH:/home/pundrew/.local/bin"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+

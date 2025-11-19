@@ -1,0 +1,10 @@
+// Environment variables to set for all applications started by niri.
+environment {
+    // For example, to set the GTK theme to "Adwaita-dark", uncomment the next line.
+    GTK_THEME "Adwaita:dark"
+    GTK2_RC_FILES "/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc"
+    // QT_STYLE_OVERRIDE "Adwaita-Dark"
+    QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORMTHEME "qt5ct"
+    QT_STYLE_OVERRIDE "kvantum"
+}

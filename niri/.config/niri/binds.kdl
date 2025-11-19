@@ -1,0 +1,217 @@
+binds {
+    // Keys consist of modifiers separated by + signs, followed by an XKB key name
+    // in the end. To find an XKB name for a particular key, you may use a program
+    // like wev.
+    //
+    // "Mod" is a special modifier equal to Super when running on a TTY, and to Alt
+    // when running as a winit window.
+    //
+    // Most actions that you can bind here can also be invoked programmatically with
+    // `niri msg action do-something`.
+
+    // Mod-Shift-/, which is usually the same as Mod-?,
+    // shows a list of important hotkeys.
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // Toggle opacity
+    Mod+Alt+Shift+Tab {toggle-window-rule-opacity; }
+    // Suggested binds for running programs: terminal, app launcher, screen locker.
+    Mod+T hotkey-overlay-title="Open a Terminal: konsole" { spawn "konsole"; }
+    Ctrl+Return { spawn-sh "niri msg action focus-monitor DP-1 && rofi -show combi -monitor DP-1" ; } 
+    Mod+W { spawn-sh "niri msg action focus-monitor DP-1 && rofi -show window -monitor DP-1" ; } 
+    Mod+V { spawn-sh "PREVIEW=true rofi -modi clipboard:/home/pundrew/.config/cliphist/cliphist-rofi-img -show clipboard -show-icons" ; }
+    Mod+Space { spawn-sh "/home/pundrew/.config/niri/scripts/scratchpad/launch-scratchpad.sh"; }
+
+    // quick default 
+    Mod+Alt+Shift+Return { spawn-sh "niri msg action focus-workspace SMTK; niri msg action focus-workspace 'Streaming and Recording'; niri msg action focus-workspace Dev" ; }
+
+    // lockscreen
+    Mod+L { spawn-sh "hyprlock"; }
+
+    // move window to scratchpad
+    Mod+Shift+Backspace { spawn-sh "niri msg action move-window-to-workspace scratch --focus=false" ; }
+
+    // Example volume keys mappings for PipeWire & WirePlumber.
+    // The allow-when-locked=true property makes them work even when the session is locked.
+    // Using spawn-sh allows to pass multiple arguments together with the command.
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "swayosd-client --output-volume +5 --max-volume 200"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "swayosd-client --output-volume -5 --max-volume 200"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "swayosd-client --output-volume mute-toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+    // Example media keys mapping using playerctl.
+    // This will work with any MPRIS-enabled media player.
+    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+
+    // Example brightness key mappings for brightnessctl.
+    // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
+    // but you need to manually put each argument in separate "" quotes.
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+
+    Alt+Shift+W { set-dynamic-cast-window; }
+    Alt+Shift+M { set-dynamic-cast-monitor; }
+    Alt+Shift+X { clear-dynamic-cast-target; }
+
+    // Open/close the Overview: a zoomed-out view of workspaces and windows.
+    // You can also move the mouse into the top-left hot corner,
+    // or do a four-finger swipe up on a touchpad.
+    Mod+Shift+W repeat=false { toggle-overview; }
+
+    Alt+F4 repeat=false { close-window; }
+
+    Mod+P { spawn-sh "konsole --hold -e 'niri msg pick-window'";}
+
+    // trigger script to retain window's tiled position when coming out of fullscreen
+    Mod+Shift+Ctrl+Backspace { spawn-sh "/home/pundrew/.config/niri/scripts/nfsm/nfsm-cli.sh"; }
+
+    // Keybinds to swap windows
+    Mod+Alt+Left {swap-window-left; } 
+    Mod+Alt+Right {swap-window-right; }
+
+    // Keybinds to focus windows and columns
+    Alt+Left  { focus-column-left-or-last; }
+    Alt+Down  { focus-window-down; }
+    Alt+Up    { focus-window-up; }
+    Alt+Right { focus-column-right-or-first; }
+
+    Alt+Home  { focus-monitor-left; }
+    Alt+End   { focus-monitor-right; }
+    // Mod+Shift+Down  { focus-monitor-down; }
+    // Mod+Shift+Up    { focus-monitor-up; }
+
+    // Keybinds to move windows and columns
+    Mod+Shift+Left       { move-column-left; }
+    Mod+Down             { move-window-down; }
+    Mod+Up               { move-window-up; }
+    Mod+Shift+Right      { move-column-right; }
+    Mod+Home             { move-window-to-monitor-left; }
+    Mod+End              { move-window-to-monitor-right; }
+    Mod+Shift+End        { move-column-to-monitor-right; }
+    Mod+Shift+Home       { move-column-to-monitor-left; }
+
+    // Alternative commands that move across workspaces when reaching
+    // the first or last window in a column.
+    // Mod+J     { focus-window-or-workspace-down; }
+    // Mod+K     { focus-window-or-workspace-up; }
+    // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
+    // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
+
+    // Mod+Home { focus-column-first; }
+    // Mod+End  { focus-column-last; }
+    // Mod+Ctrl+Home { move-column-to-first; }
+    // Mod+Ctrl+End  { move-column-to-last; }
+
+    // Mod+Home{ move-column-to-monitor-down; }
+    // Mod+Home{ move-column-to-monitor-up; }
+
+    // Alternatively, there are commands to move just a single window:
+    // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
+    // ...
+
+    // And you can also move a whole workspace to another monitor:
+    // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
+    // ...
+
+    Alt+Page_Down      { focus-workspace-down; }
+    Alt+Page_Up        { focus-workspace-up; }
+    Mod+Page_Up        { move-window-to-workspace-up; }
+    Mod+Page_Down      { move-window-to-workspace-down; }
+    Mod+Shift+Page_Down { move-column-to-workspace-down; }
+    Mod+Shift+Page_Up   { move-column-to-workspace-up; }
+
+    // You can refer to workspaces by index. However, keep in mind that
+    // niri is a dynamic workspace system, so these commands are kind of
+    // "best effort". Trying to refer to a workspace index bigger than
+    // the current workspace count will instead refer to the bottommost
+    // (empty) workspace.
+    //
+    // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
+    // will all refer to the 3rd workspace.
+     
+    // Mod+1 { focus-workspace 1; }
+    // Mod+2 { focus-workspace 2; }
+    // Mod+3 { focus-workspace 3; }
+    // Mod+4 { focus-workspace 4; }
+    // Mod+5 { focus-workspace 5; }
+    // Mod+6 { focus-workspace 6; }
+    // Mod+7 { focus-workspace 7; }
+    // Mod+8 { focus-workspace 8; }
+    // Mod+9 { focus-workspace 9; }
+
+    Mod+Left  { consume-or-expel-window-left; }
+    Mod+Right { consume-or-expel-window-right; }
+
+    Mod+Return { switch-preset-column-width; }
+    // Cycling through the presets in reverse order is also possible.
+    // Mod+R { switch-preset-column-width-back; }
+    Mod+Escape { reset-window-height; }
+    Mod+Ctrl+Backspace { maximize-column; }
+
+    // Expand the focused column to space not taken up by other fully visible columns.
+    // Makes the column "fill the rest of the space".
+    Mod+Ctrl+F { expand-column-to-available-width; }
+
+    Mod+C { center-column; }
+
+    // Center all fully visible columns on screen.
+    // Mod+Ctrl+C { center-visible-columns; }
+
+    // Finer width adjustments.
+    // This command can also:
+    // * set width in pixels: "1000"
+    // * adjust width in pixels: "-5" or "+5"
+    // * set width as a percentage of screen width: "24%"
+    // * adjust width as a percentage of screen width: "-10%" or "+10%"
+    // Pixel sizes use logical, or scaled, pixels. I.e. on an output with scale 2.0,
+    // set-column-width "100" will make the column occupy 200 physical screen pixels.
+    Mod+Ctrl+Left { set-column-width "-5%"; }
+    Mod+Ctrl+Right { set-column-width "+5%"; }
+
+    // Finer height adjustments when in column with other windows.
+    Mod+Ctrl+Down { set-window-height "-5%"; }
+    Mod+Ctrl+Up { set-window-height "+5%"; }
+
+    // Move the focused window between the floating and the tiling layout.
+    Mod+Backspace       { toggle-window-floating; }
+    Alt+Backspace { switch-focus-between-floating-and-tiling; }
+
+    // Toggle tabbed column display mode.
+    // Windows in this column will appear as vertical tabs,
+    // rather than stacked on top of each other.
+    Mod+Tab { toggle-column-tabbed-display; } 
+
+    // Actions to switch layouts.
+    // Note: if you uncomment these, make sure you do NOT have
+    // a matching layout switch hotkey configured in xkb options above.
+    // Having both at once on the same hotkey will break the switching,
+    // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
+    // Mod+Space       { switch-layout "next"; }
+    // Mod+Shift+Space { switch-layout "prev"; }
+
+    Mod+Shift+S { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    // Applications such as remote-desktop clients and software KVM switches may
+    // request that niri stops processing the keyboard shortcuts defined here
+    // so they may, for example, forward the key presses as-is to a remote machine.
+    // It's a good idea to bind an escape hatch to toggle the inhibitor,
+    // so a buggy application can't hold your session hostage.
+    //
+    // The allow-inhibiting=false property can be applied to other binds as well,
+    // which ensures niri always processes them, even when an inhibitor is active.
+    // Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    // The quit action will show a confirmation dialog to avoid accidental exits.
+    Mod+Shift+E { spawn-sh "wineserver -k; niri msg action quit"; }
+    Ctrl+Alt+Delete { quit; }
+
+    // Powers off the monitors. To turn them back on, do any input like
+    // moving the mouse or pressing any other key.
+    // Mod+Shift+P { power-off-monitors; }
+}
+

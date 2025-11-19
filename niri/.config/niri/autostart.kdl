@@ -1,0 +1,25 @@
+// Add lines like this to spawn processes at startup.
+// Note that running niri as a session supports xdg-desktop-autostart,
+// which may be more convenient to use.
+// See the binds section below for more spawn examples.
+
+spawn-sh-at-startup "/usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1 &"
+spawn-sh-at-startup "python3 /home/pundrew/.config/niri/scripts/nfsm/nfsm.py &"
+spawn-sh-at-startup "/home/pundrew/.config/niri/scripts/launch_obs_when_ready.sh &"
+spawn-sh-at-startup "xembedsniproxy &"
+spawn-at-startup "hyprpaper"
+spawn-at-startup "swayosd-server"
+spawn-sh-at-startup "wl-paste --type text --watch cliphist store &"
+spawn-sh-at-startup "wl-paste --type image --watch cliphist store &"
+spawn-at-startup "fcitx5"
+spawn-at-startup "konsole"
+spawn-at-startup "discord"
+spawn-at-startup "/home/pundrew/firefox/firefox/firefox"
+spawn-at-startup "steam"
+spawn-at-startup "gtk-launch net.lutris.Lutris"
+spawn-at-startup "/usr/bin/showmethekey-gtk"
+spawn-sh-at-startup "gtk-launch spotify"
+spawn-at-startup "nautlius"
+spawn-sh-at-startup "/home/pundrew/bolt-launcher/bolt"
+spawn-sh-at-startup "sleep 15; gtk-launch runelite-dev-build"
+spawn-sh-at-startup "gtk-launch kakaotalk"

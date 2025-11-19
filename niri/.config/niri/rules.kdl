@@ -1,0 +1,128 @@
+// Global window rules
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+// Border for screen-casted windows
+// window-rule {
+//     match is-window-cast-target=true
+//     focus-ring {
+//         active-color "#ff0000"
+//         inactive-color "#ff0000"
+//     }
+// }
+
+window-rule {
+    match title=r#"RuneLite.*"#
+    open-on-output "DP-1"
+    open-floating true
+    open-on-workspace "scratch"
+    // opacity 0.2
+}
+
+window-rule {
+    match app-id="com.obsproject.Studio"
+    open-on-workspace "Streaming and Recording"
+}
+
+window-rule {
+    match app-id="firefox" at-startup=true
+    open-on-workspace "Main"
+}
+
+window-rule {
+    match title=r#"(?i)discord"#
+    open-on-workspace "Chat"
+    open-maximized true
+}
+
+
+window-rule {
+    match title=r#"(?i)steam"#
+    open-on-workspace "Games"
+}
+
+// KakaoTalk notifications
+// todo: block out from screen-capture
+window-rule {
+    match app-id="steam_app_default" title=""
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+    open-focused false
+    open-on-output "DP-1"
+}
+
+window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+    open-focused false 
+    block-out-from "screencast"
+    open-on-output "DP-1"
+}
+
+window-rule {
+    match app-id="net.lutris.Lutris"
+    open-on-workspace "Games"
+}
+
+window-rule {
+    match app-id="BoltLauncher"
+    open-on-workspace "Games"
+}
+
+window-rule {
+    match title=r#"(?i)kakaotalk"#
+    open-on-workspace "scratch"
+    open-floating true
+    min-width 440
+    max-width 440
+    min-height 680
+    max-height 680
+}
+
+window-rule {
+    match app-id="showmethekey-gtk"
+    open-floating true
+    open-on-workspace "SMTK"
+    min-width 405
+    max-width 405
+    min-height 85
+    max-height 85
+    default-floating-position x=668 y=1820
+}
+
+window-rule {
+    match app-id="one.alynx.showmethekey"
+    open-on-workspace "SMTK"
+    open-maximized true
+}
+
+window-rule {
+    match title="LocalSend"
+    open-on-workspace "scratch"
+    open-floating true
+}
+
+window-rule {
+    match app-id="Spotify" 
+    open-floating true
+    open-on-workspace "scratch"
+    min-width 1170
+    max-width 1170
+    min-height 1200
+    max-height 1200
+}
+
+window-rule {
+    match app-id="org.gnome.Nautilus"
+    open-floating true
+    open-on-workspace "scratch"
+    min-width 1440
+    max-width 1440
+    min-height 1130
+    max-height 1130
+}
+
+layer-rule {
+    match namespace="rofi"
+}

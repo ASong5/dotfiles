@@ -1,7 +1,7 @@
 [Appearance]
 AntiAliasFonts=true
 BoldIntense=true
-ColorScheme=catppuccin-macchiato
+ColorScheme=catppuccin-macchiato-transparent
 Font=JetBrainsMono Nerd Font,12,-1,5,75,0,0,0,0,0,Bold
 LineSpacing=0
 UseFontLineChararacters=false
@@ -10,7 +10,7 @@ UseFontLineChararacters=false
 CursorShape=0
 
 [General]
-Name=Profile 1
+Name=Transparent
 Parent=FALLBACK/
 SemanticUpDown=false
 TerminalCenter=false

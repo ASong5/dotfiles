@@ -1,5 +1,6 @@
 (defcfg
     log-layer-changes no
+    process-unmapped-keys yes
 )
 
 (defsrc

@@ -14,10 +14,11 @@ window-rule {
 // }
 
 window-rule {
-    match title=r#"RuneLite.*"#
+    match title=r#"RuneLite.*"# app-id="net-runelite-client-RuneLite"
     open-on-output "DP-1"
     open-floating true
     open-on-workspace "scratch"
+    open-focused false
     // opacity 0.2
 }
 
@@ -54,7 +55,7 @@ window-rule {
 
 window-rule {
     match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
-    default-floating-position x=10 y=10 relative-to="bottom-right"
+    default-floating-position x=10 y=0 relative-to="bottom-right"
     open-focused false 
     block-out-from "screencast"
     open-on-output "DP-1"
@@ -74,6 +75,7 @@ window-rule {
     match title=r#"(?i)kakaotalk"#
     open-on-workspace "scratch"
     open-floating true
+    open-focused false
     min-width 440
     max-width 440
     min-height 680
@@ -88,7 +90,7 @@ window-rule {
     max-width 405
     min-height 85
     max-height 85
-    default-floating-position x=668 y=1820
+    default-floating-position x=668 y=1790
 }
 
 window-rule {
@@ -101,12 +103,14 @@ window-rule {
     match title="LocalSend"
     open-on-workspace "scratch"
     open-floating true
+    open-focused false
 }
 
 window-rule {
     match app-id="Spotify" 
     open-floating true
     open-on-workspace "scratch"
+    open-focused false
     min-width 1170
     max-width 1170
     min-height 1200
@@ -117,6 +121,7 @@ window-rule {
     match app-id="org.gnome.Nautilus"
     open-floating true
     open-on-workspace "scratch"
+    open-focused false
     min-width 1440
     max-width 1440
     min-height 1130

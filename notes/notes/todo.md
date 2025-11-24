@@ -17,6 +17,11 @@
 - [ ]  finish adding more autostart apps (add as we go, and consider moving all apps from autostart to niri config for sake of having one place to manage it all)
 
 ideas:
-- [ ]  runelite plugin to prevent minimap rotation
 - [ ]  runelite plugin to allow changing position of potions within potion storage
-
+    - trim doses from text when saving to file so that dose count does not affect positioning  
+    - set anti drag settings based on what is already used in bank/inventory
+    - implement sort button
+    - implement search (i think it would be better to just highlight a potion when it is fuzzily matched rather than overlaying a new panel over the section to show only the matched results)
+    - make compatible with potion storage bars plugin 
+    - in the parser, the i+=2 should use NAME_OFFSET to eliminate magic numbers
+- [ ]  runelite plugin to prevent minimap rotation

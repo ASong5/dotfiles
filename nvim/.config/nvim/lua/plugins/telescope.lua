@@ -62,15 +62,23 @@ return {
 			end, {})
 			vim.keymap.set("n", "<leader>fb", builtin.buffers)
 			vim.keymap.set("n", "<leader>fs", function()
-				vim.ui.select(
-					{ "function", "variable", "object", "package", "string", "array", "constant", "boolean" },
-					{
-						prompt = "Select a symbol type: ",
-					},
-					function(choice)
-						builtin.lsp_document_symbols({ symbols = choice })
-					end
-				)
+				vim.ui.select({
+					"class",
+					"method",
+					"field",
+                    "function",
+					"variable",
+					"object",
+					"package",
+					"string",
+					"array",
+					"constant",
+					"boolean",
+				}, {
+					prompt = "Select a symbol type: ",
+				}, function(choice)
+					builtin.lsp_document_symbols({ symbols = choice })
+				end)
 			end)
 			vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
 			require("telescope").load_extension("undo")

@@ -14,7 +14,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Toggle opacity
-    Mod+Alt+Shift+Tab {toggle-window-rule-opacity; }
+    // Mod+Alt+Shift+Grave {toggle-window-rule-opacity; }
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: konsole" { spawn "konsole"; }
     Ctrl+Return { spawn-sh "niri msg action focus-monitor DP-1 && rofi -show combi -monitor DP-1" ; } 
@@ -28,8 +28,32 @@ binds {
     // lockscreen
     Mod+L { spawn-sh "hyprlock"; }
 
+    // connect/disconnect bose headphones
+    Mod+Alt+Shift+Home { spawn-sh "sudo /home/pundrew/.dotfiles/scripts/scripts/bose/bose-connect.sh" ; }
+
     // move window to scratchpad
     Mod+Shift+Backspace { spawn-sh "niri msg action move-window-to-workspace scratch --focus=false" ; }
+
+    // one-hand alternative bind of the above
+    Mod+Shift+Grave { spawn-sh "niri msg action move-window-to-workspace scratch --focus=false" ; }
+
+    // bring back most recent scratchpad window
+    Mod+Shift+Tab { spawn "/home/pundrew/.config/niri/scripts/scratchpad/niri-scratchpad.py" "--recent" "--multi-monitor"; }
+
+    // switch between eng/kor and change to qwerty accordingly
+    Ctrl+Space { spawn "/home/pundrew/.dotfiles/scripts/scripts/ime-kanata-toggle.sh"; }
+
+    // terminal
+    Mod+Shift+1 { spawn "/home/pundrew/.config/niri/scripts/scratchpad/niri-scratchpad.py" "--app-id" "org.kde.konsole" "--spawn" "konsole" "--width" "1000" "--height" "800" "--multi-monitor"; }
+
+    // runelite
+    Mod+Shift+2 { spawn "/home/pundrew/.config/niri/scripts/scratchpad/niri-scratchpad.py" "--app-id" "net-runelite-client-RuneLite" "--multi-monitor"; }
+
+    // nautilus
+    Mod+Shift+3 { spawn "/home/pundrew/.config/niri/scripts/scratchpad/niri-scratchpad.py" "--app-id" "org.gnome.Nautilus" "--multi-monitor"; }
+
+    // spotify
+    Mod+Shift+4 { spawn "/home/pundrew/.config/niri/scripts/scratchpad/niri-scratchpad.py" "--app-id" "Spotify" "--multi-monitor"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.

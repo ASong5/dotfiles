@@ -3,6 +3,8 @@
 WINDOW1="Floating Window - Show Me The Key"
 WINDOW2="RuneLite"
 
+showmethekey-gtk --keys-win --no-app-win &
+
 while true; do
     current_windows=$(niri msg windows | grep "Title:" | sed 's/Title: //')
     

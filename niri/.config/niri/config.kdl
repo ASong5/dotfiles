@@ -13,6 +13,8 @@ include "layout.kdl"
 input {
     keyboard {
         xkb {
+            layout "us,kr"
+            options "grp:ctrl_space_toggle"
         }
         numlock
     }
@@ -61,6 +63,11 @@ output "HDMI-A-1" {
     hot-corners {
         off
     }
+}
+
+cursor {
+    xcursor-theme "breeze_cursors"
+    xcursor-size 26
 }
 
 prefer-no-csd

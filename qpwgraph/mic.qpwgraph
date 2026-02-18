@@ -1,0 +1,254 @@
+<!DOCTYPE patchbay>
+<patchbay name="mic" version="0.9.5">
+ <items>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Spectrum-1" port="spectrum:output_FR"/>
+   <input node="Output Level Meter-1" port="output_level:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Firefox-2" port="Firefox:output_FL"/>
+   <input node="PulseAudio Volume Control-11" port="PulseAudio Volume Control:input_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Firefox" port="Firefox:output_FL"/>
+   <input node="Easy Effects Sink" port="Easy Effects Sink:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="PipeWire ALSA [java]/ALSA Playback [java]-1" port="ALSA Playback [java]:output_FR"/>
+   <input node="PulseAudio Volume Control-12" port="PulseAudio Volume Control:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="PipeWire ALSA [java]/ALSA Playback [java]-1" port="ALSA Playback [java]:output_FR"/>
+   <input node="Easy Effects Sink" port="Easy Effects Sink:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Easy Effects Source" port="Easy Effects Source:capture_FR"/>
+   <input node="PulseAudio Volume Control-5" port="PulseAudio Volume Control:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-video">
+   <output node="niri-3" port="niri:output_1"/>
+   <input node="obs-3" port="obs:input_1"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Easy Effects Sink" port="Easy Effects Sink:monitor_FR"/>
+   <input node="Spectrum-1" port="spectrum:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Navi 31 HDMI/DP Audio Digital Stereo (HDMI) [Monitor]" port="24G1WG3-:monitor_FL"/>
+   <input node="PulseAudio Volume Control-1" port="PulseAudio Volume Control:input_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Firefox-2" port="Firefox:output_FL"/>
+   <input node="Easy Effects Sink" port="Easy Effects Sink:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="PipeWire ALSA [java]/ALSA Playback [java]-1" port="ALSA Playback [java]:output_FL"/>
+   <input node="Easy Effects Sink" port="Easy Effects Sink:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="PipeWire ALSA [java]/ALSA Playback [java]-1" port="ALSA Playback [java]:output_FL"/>
+   <input node="PulseAudio Volume Control-12" port="PulseAudio Volume Control:input_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Easy Effects Source" port="Easy Effects Source:capture_FL"/>
+   <input node="PulseAudio Volume Control-5" port="PulseAudio Volume Control:input_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Firefox" port="Firefox:output_FL"/>
+   <input node="PulseAudio Volume Control-8" port="PulseAudio Volume Control:input_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Navi 31 HDMI/DP Audio Digital Stereo (HDMI) [Monitor]" port="24G1WG3-:monitor_FR"/>
+   <input node="PulseAudio Volume Control-1" port="PulseAudio Volume Control:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Easy Effects Sink" port="Easy Effects Sink:monitor_FL"/>
+   <input node="Spectrum-1" port="spectrum:input_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="spotify" port="spotify:output_FL"/>
+   <input node="PulseAudio Volume Control-6" port="PulseAudio Volume Control:input_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Spectrum-1" port="spectrum:output_FL"/>
+   <input node="Output Level Meter-1" port="output_level:input_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="speech-dispatcher-dummy" port="speech-dispatcher-dummy:output_FL"/>
+   <input node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC892 Analog:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Blue Snowball Mono" port="Blue Snowball:capture_MONO"/>
+   <input node="Gate (Mic)" port="gate:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Easy Effects Source" port="Easy Effects Source:capture_FL"/>
+   <input node="Bose QC Headphones" port="Bose QC Headphones:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="speech-dispatcher-dummy" port="speech-dispatcher-dummy:output_FR"/>
+   <input node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC892 Analog:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Spectrum" port="spectrum:output_FL"/>
+   <input node="Output Level Meter" port="output_level:input_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="PipeWire ALSA [java]/ALSA Playback [java]" port="ALSA Playback [java]:output_FR"/>
+   <input node="PulseAudio Volume Control-7" port="PulseAudio Volume Control:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="PipeWire ALSA [java]/ALSA Playback [java]-2" port="ALSA Playback [java]:output_FL"/>
+   <input node="Easy Effects Sink" port="Easy Effects Sink:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Easy Effects Source" port="Easy Effects Source:capture_FL"/>
+   <input node="OBS-1" port="OBS:input_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Easy Effects Source" port="Easy Effects Source:capture_FR"/>
+   <input node="Bose QC Headphones" port="Bose QC Headphones:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Easy Effects Source" port="Easy Effects Source:capture_FR"/>
+   <input node="OBS-1" port="OBS:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Firefox-1" port="Firefox:output_FR"/>
+   <input node="Easy Effects Sink" port="Easy Effects Sink:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="spotify" port="spotify:output_FL"/>
+   <input node="Easy Effects Sink" port="Easy Effects Sink:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Firefox-2" port="Firefox:output_FR"/>
+   <input node="Easy Effects Sink" port="Easy Effects Sink:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="PipeWire ALSA [java]/ALSA Playback [java]" port="ALSA Playback [java]:output_FR"/>
+   <input node="Easy Effects Sink" port="Easy Effects Sink:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Analog Stereo [Monitor]" port="ALC892 Analog:monitor_FL"/>
+   <input node="OBS" port="OBS:input_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Blue Snowball Mono" port="Blue Snowball:capture_MONO"/>
+   <input node="PulseAudio Volume Control" port="PulseAudio Volume Control:input_MONO"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC892 Analog:capture_FR"/>
+   <input node="PulseAudio Volume Control-3" port="PulseAudio Volume Control:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="spotify" port="spotify:output_FR"/>
+   <input node="Easy Effects Sink" port="Easy Effects Sink:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Easy Effects Source" port="Easy Effects Source:capture_FL"/>
+   <input node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC892 Analog:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Output Level Meter" port="output_level:output_FR"/>
+   <input node="Easy Effects Source" port="Easy Effects Source:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Analog Stereo [Monitor]" port="ALC892 Analog:monitor_FR"/>
+   <input node="OBS" port="OBS:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Analog Stereo [Monitor]" port="ALC892 Analog:monitor_FR"/>
+   <input node="PulseAudio Volume Control-2" port="PulseAudio Volume Control:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC892 Analog:capture_FL"/>
+   <input node="PulseAudio Volume Control-3" port="PulseAudio Volume Control:input_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Firefox-2" port="Firefox:output_FR"/>
+   <input node="PulseAudio Volume Control-11" port="PulseAudio Volume Control:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-video">
+   <output node="niri" port="niri:output_1"/>
+   <input node="obs-1" port="obs:input_1"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="PipeWire ALSA [java]/ALSA Playback [java]" port="ALSA Playback [java]:output_FL"/>
+   <input node="Easy Effects Sink" port="Easy Effects Sink:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="spotify" port="spotify:output_FR"/>
+   <input node="PulseAudio Volume Control-6" port="PulseAudio Volume Control:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Firefox-1" port="Firefox:output_FR"/>
+   <input node="PulseAudio Volume Control-9" port="PulseAudio Volume Control:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Spectrum" port="spectrum:output_FR"/>
+   <input node="Output Level Meter" port="output_level:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Easy Effects Sink" port="Easy Effects Sink:monitor_FL"/>
+   <input node="PulseAudio Volume Control-4" port="PulseAudio Volume Control:input_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="PipeWire ALSA [java]/ALSA Playback [java]" port="ALSA Playback [java]:output_FL"/>
+   <input node="PulseAudio Volume Control-7" port="PulseAudio Volume Control:input_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Analog Stereo [Monitor]" port="ALC892 Analog:monitor_FL"/>
+   <input node="PulseAudio Volume Control-2" port="PulseAudio Volume Control:input_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="PipeWire ALSA [java]/ALSA Playback [java]-2" port="ALSA Playback [java]:output_FR"/>
+   <input node="Easy Effects Sink" port="Easy Effects Sink:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Easy Effects Source" port="Easy Effects Source:capture_FR"/>
+   <input node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC892 Analog:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Firefox" port="Firefox:output_FR"/>
+   <input node="PulseAudio Volume Control-8" port="PulseAudio Volume Control:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Firefox-1" port="Firefox:output_FL"/>
+   <input node="Easy Effects Sink" port="Easy Effects Sink:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-video">
+   <output node="niri-2" port="niri:output_1"/>
+   <input node="obs" port="obs:input_1"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Chromium" port="Chromium:output_FL"/>
+   <input node="Easy Effects Sink" port="Easy Effects Sink:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-video">
+   <output node="niri-1" port="niri:output_1"/>
+   <input node="obs-2" port="obs:input_1"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Output Level Meter" port="output_level:output_FL"/>
+   <input node="Easy Effects Source" port="Easy Effects Source:input_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Firefox" port="Firefox:output_FR"/>
+   <input node="Easy Effects Sink" port="Easy Effects Sink:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Chromium" port="Chromium:output_FR"/>
+   <input node="Easy Effects Sink" port="Easy Effects Sink:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Easy Effects Sink" port="Easy Effects Sink:monitor_FR"/>
+   <input node="PulseAudio Volume Control-4" port="PulseAudio Volume Control:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Firefox-1" port="Firefox:output_FL"/>
+   <input node="PulseAudio Volume Control-9" port="PulseAudio Volume Control:input_FL"/>
+  </item>
+ </items>
+</patchbay>
+

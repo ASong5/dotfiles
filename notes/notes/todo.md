@@ -18,10 +18,11 @@
 
 ideas:
 - [ ]  runelite plugin to allow changing position of potions within potion storage
-    - trim doses from text when saving to file so that dose count does not affect positioning  
-    - set anti drag settings based on what is already used in bank/inventory
-    - implement sort button
-    - implement search (i think it would be better to just highlight a potion when it is fuzzily matched rather than overlaying a new panel over the section to show only the matched results)
-    - make compatible with potion storage bars plugin 
-    - in the parser, the i+=2 should use NAME_OFFSET to eliminate magic numbers
+    - [x] trim doses from text when saving to file so that dose count does not affect positioning  
+    - [ ] change access modifiers of some methods and fields to be appropriate based on context 
+    - [ ] set anti drag settings based on what is already used in bank/inventory
+    - [ ] implement sort button
+    - [ ] implement search (i think it would be better to just highlight a potion when it is fuzzily matched rather than overlaying a new panel over the section to show only the matched results)
+    - [x] make compatible with potion storage bars plugin 
 - [ ]  runelite plugin to prevent minimap rotation
+- [ ] runelite plugin to tell you what specific kc you got each clog at (maybe as a tooltip when you hover over it in collection log, or a text command, or both)

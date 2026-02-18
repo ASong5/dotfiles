@@ -101,6 +101,7 @@ alias sleep="systemctl suspend --now"
 alias e="nvim"
 alias ef='nvim "$(fzf -m --preview='\''batcat --color=always {}'\'')"'
 alias bat=batcat
+alias nf=neofetch
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -126,7 +127,8 @@ if ! shopt -oq posix; then
     fi
 fi
 source /usr/share/doc/fzf/examples/key-bindings.bash
-source /usr/share/bash-completion/completions/fzf
+# source /usr/share/bash-completion/completions/fzf
+source /usr/share/doc/fzf/examples/completion.bash
 bind 'TAB:menu-complete'
 bind 'set show-all-if-ambiguous on'
 # env variable
@@ -141,6 +143,7 @@ export FZF_CTRL_R_OPTS="
   --bind 'ctrl-y:execute-silent(echo -n {2..} | wlcopy)+abort'
   --color header:italic"
 export FZF_COMPLETION_OPTS="--border --info=inline"
+export PATH="$HOME/.dotfiles/scripts/scripts:$PATH"
 
 go() {
     if [ -n "$1" ]; then
@@ -187,3 +190,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
+
+# pyenv init
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"

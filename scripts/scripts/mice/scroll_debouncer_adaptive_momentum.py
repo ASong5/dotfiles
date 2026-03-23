@@ -1,20 +1,25 @@
 #!/usr/bin/env python3
 """
-Razer Orochi V2 - Adaptive momentum filter WITH DETAILED LOGGING
+Razer Orochi V2 - Pure verbose logger (no filtering, no virtual device)
+Logs every raw REL_WHEEL event with timestamp, direction, value.
+Shows running stats and rough reversal rate.
+Uses the same permissive device detection as your working filter.
 """
+
 import evdev
-from evdev import UInput, ecodes as e
+from evdev import InputDevice, ecodes as e
 import time
 import sys
-from collections import deque
 
-print("Adaptive momentum filter starting...", file=sys.stderr)
+print("Starting raw scroll event logger for Razer Orochi V2...", file=sys.stderr)
+print("No filtering — logging every REL_WHEEL event.", file=sys.stderr)
+print("Press Ctrl+C to stop and see final stats.\n", file=sys.stderr)
 
-# ── Find device ──
+# ── Find device (same logic as your working filter) ──
 devices = []
 for path in evdev.list_devices():
     try:
-        dev = evdev.InputDevice(path)
+        dev = InputDevice(path)
         name_lower = dev.name.lower()
         if 'razer' not in name_lower or 'orochi' not in name_lower or 'filtered' in name_lower:
             continue
@@ -26,115 +31,95 @@ for path in evdev.list_devices():
             continue
         if 'mouse' not in name_lower:
             devices = [dev]
-            print(f"Selected: {dev.path} → {dev.name}", file=sys.stderr)
+            print(f"Selected primary: {dev.path} → {dev.name}", file=sys.stderr)
             break
         elif not devices:
             devices = [dev]
-            print(f"Fallback: {dev.path} → {dev.name}", file=sys.stderr)
+            print(f"Fallback selected: {dev.path} → {dev.name}", file=sys.stderr)
     except:
         pass
 
 if not devices:
-    print("ERROR: No device found", file=sys.stderr)
+    print("ERROR: No suitable Razer Orochi V2 device found.", file=sys.stderr)
+    print("Try running with sudo, or check 'evtest' to see exact device names.", file=sys.stderr)
     sys.exit(1)
 
-primary = devices[0]
+mouse = devices[0]
 
-# ── Create virtual ──
-caps = primary.capabilities()
-clean_caps = {k: v for k, v in caps.items() if k not in [e.EV_SYN, e.EV_FF, e.EV_PWR]}
-uinput = UInput(clean_caps, name="Razer Orochi V2 Filtered", vendor=0x1532, product=0x0094, bustype=0x0003)
-print(f"Virtual: {uinput.device.path}", file=sys.stderr)
-time.sleep(0.8)
-
-# ── Grab ──
+# ── Grab the device ──
 try:
-    primary.grab()
-    print(f"Grabbed: {primary.path}", file=sys.stderr)
+    mouse.grab()
+    print(f"Successfully grabbed: {mouse.path}", file=sys.stderr)
 except Exception as ex:
-    print(f"ERROR: {ex}", file=sys.stderr)
+    print(f"Grab failed: {ex}", file=sys.stderr)
+    print("This usually means another process has grabbed it (e.g. your filter script is running).", file=sys.stderr)
+    print("Stop any other mouse scripts first.", file=sys.stderr)
     sys.exit(1)
 
-print("\nAdaptive filter: 50ms during active scrolling, 300ms during pauses", file=sys.stderr)
-print("Blocks ~95% of phantoms, no input lag on reversals\n", file=sys.stderr)
+# ── Stats ──
+total_scrolls = 0
+up_count = 0
+down_count = 0
+reversals_detected = 0
+last_direction = None
+last_time = 0.0
 
-# ── State ──
-FAST_THRESHOLD_MS = 50
-SLOW_THRESHOLD_MS = 350
-ACTIVE_WINDOW_MS = 200
-
-last_scroll_time = {}
-last_any_scroll_time = 0
-scroll_history = deque(maxlen=5)
-blocked_count = 0
-emitted_count = 0
-event_num = 0
+print("\nLogging started. Every raw scroll event will be printed below.")
+print("Format: [timestamp] direction value (total so far)\n", file=sys.stderr)
 
 try:
-    for event in primary.read_loop():
-        current_time = time.time()
-        
+    for event in mouse.read_loop():
         if event.type == e.EV_REL and event.code == e.REL_WHEEL:
-            direction = 1 if event.value > 0 else -1
-            opposite_direction = -direction
-            event_num += 1
-            
-            # Calculate timing info
-            time_since_any = (current_time - last_any_scroll_time) * 1000 if last_any_scroll_time > 0 else 9999
-            is_active_scrolling = time_since_any < ACTIVE_WINDOW_MS
-            threshold = FAST_THRESHOLD_MS if is_active_scrolling else SLOW_THRESHOLD_MS
-            
-            # Calculate time since opposite direction
-            time_since_opposite = None
-            if opposite_direction in last_scroll_time:
-                time_since_opposite = (current_time - last_scroll_time[opposite_direction]) * 1000
-            
-            # Check blocking
-            block_this = False
-            if time_since_opposite is not None and time_since_opposite < threshold:
-                block_this = True
-                blocked_count += 1
-                dir_str = "UP" if direction > 0 else "DOWN"
-                mode = "ACTIVE" if is_active_scrolling else "PAUSE"
-                print(f"[{event_num:4d}] ✗ BLOCK {dir_str} [{mode}] | {time_since_opposite:.1f}ms since opposite (threshold: {threshold}ms) | total blocked: {blocked_count}", file=sys.stderr)
-            
-            if not block_this:
-                # Emit it
-                emit_val = 1 if direction > 0 else -1
-                uinput.write(e.EV_REL, e.REL_WHEEL, emit_val)
-                uinput.syn()
-                emitted_count += 1
-                dir_str = "UP" if direction > 0 else "DOWN"
-                
-                # Show timing details
-                if time_since_opposite is not None:
-                    mode = "ACTIVE" if is_active_scrolling else "PAUSE"
-                    print(f"[{event_num:4d}] ✓ EMIT {dir_str} [{mode}] | {time_since_opposite:.1f}ms since opposite (threshold: {threshold}ms) | total emitted: {emitted_count}", file=sys.stderr)
-                else:
-                    print(f"[{event_num:4d}] ✓ EMIT {dir_str} | first scroll in this direction | total emitted: {emitted_count}", file=sys.stderr)
-                
-                # Update timestamps
-                last_scroll_time[direction] = current_time
-                last_any_scroll_time = current_time
-                scroll_history.append((current_time, direction))
-            
-        elif event.type == e.EV_REL and event.code == e.REL_WHEEL_HI_RES:
-            pass
-        else:
-            uinput.write_event(event)
-            if event.type == e.EV_SYN:
-                uinput.syn()
+            current_time = time.time()
+            direction = "UP" if event.value > 0 else "DOWN"
+            value = event.value
+
+            total_scrolls += 1
+
+            if direction == "UP":
+                up_count += 1
+            else:
+                down_count += 1
+
+            # Rough immediate reversal detection
+            reversal_note = ""
+            if last_direction is not None and direction != last_direction:
+                time_diff_ms = (current_time - last_time) * 1000
+                if time_diff_ms < 500:
+                    reversals_detected += 1
+                    reversal_note = f"  ^^^ REVERSAL ({time_diff_ms:.0f} ms) ^^^"
+
+            last_direction = direction
+            last_time = current_time
+
+            # Verbose log
+            ts = time.strftime("%H:%M:%S", time.localtime(current_time))
+            print(f"[{ts}] {direction:<4} value={value:>3}   (total: {total_scrolls}){reversal_note}")
+
+            # Periodic stats
+            if total_scrolls % 20 == 0 and total_scrolls > 0:
+                reversal_rate = (reversals_detected / total_scrolls * 100) if total_scrolls > 0 else 0
+                print(f"\n--- Stats @ {total_scrolls} events ---")
+                print(f"  Up: {up_count}   Down: {down_count}")
+                print(f"  Quick reversals detected: {reversals_detected}")
+                print(f"  Rough reversal rate: {reversal_rate:.2f}%")
+                print("---------------------------\n")
 
 except KeyboardInterrupt:
-    print(f"\n{'='*60}", file=sys.stderr)
-    print(f"Blocked: {blocked_count} | Emitted: {emitted_count}", file=sys.stderr)
-    phantom_rate = (blocked_count / (blocked_count + emitted_count) * 100) if (blocked_count + emitted_count) > 0 else 0
-    print(f"Phantom rate: {phantom_rate:.1f}%", file=sys.stderr)
-    print(f"{'='*60}", file=sys.stderr)
+    print("\n" + "="*60, file=sys.stderr)
+    print("Logger stopped.", file=sys.stderr)
+    print(f"Total scroll events: {total_scrolls}")
+    print(f"Up scrolls:          {up_count}")
+    print(f"Down scrolls:        {down_count}")
+    reversal_rate = (reversals_detected / total_scrolls * 100) if total_scrolls > 0 else 0
+    print(f"Quick reversals detected: {reversals_detected}")
+    print(f"Rough reversal/phantom rate: {reversal_rate:.2f}%")
+    print("="*60, file=sys.stderr)
 
 finally:
     try:
-        primary.ungrab()
+        mouse.ungrab()
+        print("Device ungrabbed.", file=sys.stderr)
     except:
         pass
-    uinput.close()
+    print("Done.", file=sys.stderr)

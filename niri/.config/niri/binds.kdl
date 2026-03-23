@@ -24,12 +24,12 @@ binds {
 
     // quick default 
     Mod+Alt+Shift+Return { spawn-sh "niri msg action focus-workspace SMTK; niri msg action focus-workspace 'Streaming and Recording'; niri msg action focus-workspace Dev" ; }
-
+    
     // lockscreen
     Mod+L { spawn-sh "hyprlock"; }
 
     // connect/disconnect bose headphones
-    Mod+Alt+Shift+Home { spawn-sh "sudo /home/pundrew/.dotfiles/scripts/scripts/bose/bose-connect.sh" ; }
+    Mod+Alt+Shift+Delete { spawn-sh "sudo /home/pundrew/.dotfiles/scripts/scripts/bose/bose-connect.sh" ; }
 
     // move window to scratchpad
     Mod+Shift+Backspace { spawn-sh "niri msg action move-window-to-workspace scratch --focus=false" ; }
@@ -88,6 +88,9 @@ binds {
     Alt+F4 repeat=false { close-window; }
 
     Mod+P { spawn-sh "konsole --hold -e 'niri msg pick-window'";}
+
+    Mod+WheelScrollUp   { set-zoom-level "+0.5"; }
+    Mod+WheelScrollDown { set-zoom-level "-0.5"; }
 
     // trigger script to retain window's tiled position when coming out of fullscreen
     Mod+Shift+Ctrl+Backspace { spawn-sh "/home/pundrew/.config/niri/scripts/nfsm/nfsm-cli.sh"; }

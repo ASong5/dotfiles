@@ -26,7 +26,7 @@ check_codec() {
 }
 
 set_profile() {
-    sudo -u pundrew XDG_RUNTIME_DIR=/run/user/1000 pactl set-card-profile "bluez_card.E4_58_BC_C3_D0_4E" a2dp_sink_sbc_xq 2>/dev/null
+    sudo -u pundrew XDG_RUNTIME_DIR=/run/user/1000 pactl set-card-profile "bluez_card.E4_58_BC_C3_D0_4E" a2dp-sink-sbc_xq 2>/dev/null
 }
 
 try_connect() {

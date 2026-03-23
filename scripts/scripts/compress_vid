@@ -1,0 +1,144 @@
+#!/bin/bash
+
+# Default values
+CRF=28
+PRESET=fast
+AUDIO_BITRATE=128k
+OUTPUT_FORMAT=""
+
+# Supported input formats
+SUPPORTED_FORMATS=("mp4" "mkv" "avi" "mov" "webm" "flv" "wmv" "m4v" "ts")
+
+# Help message
+show_help() {
+   echo "Usage: compress [OPTIONS] <input>"
+   echo ""
+   echo "Options:"
+   echo "  -c, --crf <number>       Quality (default: 28, lower = better, range 18-40)"
+   echo "  -p, --preset <preset>    Encoding speed (default: fast)"
+   echo "                           Options: ultrafast, superfast, veryfast, faster,"
+   echo "                                    fast, medium, slow, slower, veryslow"
+   echo "  -a, --audio <bitrate>    Audio bitrate (default: 128k)"
+   echo "  -f, --format <ext>       Output format (default: same as input)"
+   echo "                           Options: mp4, mkv, avi, mov, webm"
+   echo "  -o, --output <file>      Output filename (default: <input>_compressed.<ext>)"
+   echo "  -h, --help               Show this help message"
+   echo ""
+   echo "Supported input formats: ${SUPPORTED_FORMATS[*]}"
+   echo ""
+   echo "Examples:"
+   echo "  compress video.mkv"
+   echo "  compress -c 24 video.avi"
+   echo "  compress -f mp4 video.mkv"
+   echo "  compress -c 32 -f mkv -o small.mkv video.mp4"
+}
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+   case $1 in
+       -c|--crf)
+           CRF="$2"
+           shift 2
+           ;;
+       -p|--preset)
+           PRESET="$2"
+           shift 2
+           ;;
+       -a|--audio)
+           AUDIO_BITRATE="$2"
+           shift 2
+           ;;
+       -f|--format)
+           OUTPUT_FORMAT="$2"
+           shift 2
+           ;;
+       -o|--output)
+           OUTPUT_FILE="$2"
+           shift 2
+           ;;
+       -h|--help)
+           show_help
+           exit 0
+           ;;
+       -*)
+           echo "Error: Unknown option $1"
+           show_help
+           exit 1
+           ;;
+       *)
+           INPUT_FILE="$1"
+           shift
+           ;;
+   esac
+done
+
+# Check if a file was provided
+if [ -z "$INPUT_FILE" ]; then
+   echo "Error: No input file provided"
+   show_help
+   exit 1
+fi
+
+# Check if the file exists
+if [ ! -f "$INPUT_FILE" ]; then
+   echo "Error: File '$INPUT_FILE' not found"
+   exit 1
+fi
+
+# Check if ffmpeg is installed
+if ! command -v ffmpeg &> /dev/null; then
+   echo "Error: ffmpeg is not installed"
+   echo "Install it with: sudo apt install ffmpeg"
+   exit 1
+fi
+
+# Get input extension and validate it
+INPUT_EXT="${INPUT_FILE##*.}"
+INPUT_EXT="${INPUT_EXT,,}" # lowercase
+if [[ ! " ${SUPPORTED_FORMATS[*]} " =~ " ${INPUT_EXT} " ]]; then
+   echo "Error: Unsupported input format '.${INPUT_EXT}'"
+   echo "Supported formats: ${SUPPORTED_FORMATS[*]}"
+   exit 1
+fi
+
+# Validate CRF
+if ! [[ "$CRF" =~ ^[0-9]+$ ]] || [ "$CRF" -lt 18 ] || [ "$CRF" -gt 40 ]; then
+   echo "Error: CRF must be an integer between 18 and 40"
+   exit 1
+fi
+
+# Determine output extension
+if [ -n "$OUTPUT_FORMAT" ]; then
+   OUT_EXT="${OUTPUT_FORMAT,,}"
+else
+   OUT_EXT="$INPUT_EXT"
+fi
+
+# Set default output filename if not provided
+if [ -z "$OUTPUT_FILE" ]; then
+   OUTPUT_FILE="${INPUT_FILE%.*}_compressed.${OUT_EXT}"
+fi
+
+# Check if output file already exists
+if [ -f "$OUTPUT_FILE" ]; then
+   read -p "Warning: '$OUTPUT_FILE' already exists. Overwrite? (y/n): " -n 1 -r
+   echo
+   if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+       echo "Cancelled"
+       exit 0
+   fi
+fi
+
+# Run the compression
+echo "Compressing '$INPUT_FILE' to '$OUTPUT_FILE'..."
+echo "Settings: CRF ${CRF}, preset ${PRESET}, audio ${AUDIO_BITRATE}"
+
+if ffmpeg -i "$INPUT_FILE" -c:v libx264 -crf "$CRF" -preset "$PRESET" -c:a aac -b:a "$AUDIO_BITRATE" "$OUTPUT_FILE"; then
+   ORIGINAL_SIZE=$(du -h "$INPUT_FILE" | cut -f1)
+   NEW_SIZE=$(du -h "$OUTPUT_FILE" | cut -f1)
+   echo "Success! Created: $OUTPUT_FILE"
+   echo "Size: $ORIGINAL_SIZE → $NEW_SIZE"
+else
+   echo "Error: Compression failed"
+   exit 1
+fi

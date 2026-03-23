@@ -81,5 +81,16 @@ clipboard {
 }
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+zoom {
+   movement-mode "cursor-follow" // "on-edge" or "centered"
+   increment-type "linear" // "exponential"
+   max-zoom 10.0
+   pinch-sensitivity 1.0
+}
+
+// Will trim this down, since I was experimenting
 animations {
+  zoom-focal-pan      { spring damping-ratio=1.0 stiffness=1200 epsilon=0.0001; }
+  zoom-level-change   { spring damping-ratio=1.0 stiffness=800 epsilon=0.0001; }
 }

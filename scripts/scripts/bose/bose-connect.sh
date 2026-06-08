@@ -36,6 +36,8 @@ try_connect() {
         sleep "$SLEEP_SEC"
         if bluetoothctl info "$MAC" | grep -q "Connected: yes"; then
             set_profile
+            sleep 1
+            set_profile
             sleep "$CODEC_WAIT"
             if check_codec; then
                 notify "Connected with SBC-XQ on attempt $i."

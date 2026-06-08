@@ -145,24 +145,24 @@ export FZF_CTRL_R_OPTS="
 export FZF_COMPLETION_OPTS="--border --info=inline"
 export PATH="$HOME/.dotfiles/scripts/scripts:$PATH"
 
-go() {
-    if [ -n "$1" ]; then
-        if gtk-launch "$1" &>/dev/null; then
-            :
-        else
-            app_id=$(flatpak list --columns=application | grep -i $1)
-            if [ -n "$app_id" ]; then
-                if flatpak run "$app_id"; then
-                    :
-                fi
-            else
-                echo "Could not find '$1'"
-            fi
-        fi
-    else
-        echo "Supply the executible name"
-    fi
-}
+# go() {
+#     if [ -n "$1" ]; then
+#         if gtk-launch "$1" &>/dev/null; then
+#             :
+#         else
+#             app_id=$(flatpak list --columns=application | grep -i $1)
+#             if [ -n "$app_id" ]; then
+#                 if flatpak run "$app_id"; then
+#                     :
+#                 fi
+#             else
+#                 echo "Could not find '$1'"
+#             fi
+#         fi
+#     else
+#         echo "Supply the executible name"
+#     fi
+# }
  
 eval "$(zoxide init --cmd cd bash)"
 __zoxide_cd_original="$(declare -f __zoxide_z)"
@@ -196,3 +196,10 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 alias compress="~/.dotfiles/scripts/scripts/compress_vid"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+export PATH="$HOME/scripts:$PATH"
+
+# opencode
+export PATH=/home/pundrew/.opencode/bin:$PATH

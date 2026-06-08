@@ -19,8 +19,8 @@ binds {
     Mod+T hotkey-overlay-title="Open a Terminal: konsole" { spawn "konsole"; }
     Ctrl+Return { spawn-sh "niri msg action focus-monitor DP-1 && rofi -show combi -monitor DP-1" ; } 
     Mod+W { spawn-sh "niri msg action focus-monitor DP-1 && rofi -show window -monitor DP-1" ; } 
-    Mod+V { spawn-sh "PREVIEW=true rofi -modi clipboard:/home/pundrew/.config/cliphist/cliphist-rofi-img -show clipboard -show-icons" ; }
-    Mod+Space { spawn-sh "/home/pundrew/.config/niri/scripts/scratchpad/launch-scratchpad.sh"; }
+    Mod+V { spawn-sh "PREVIEW=true rofi -modi clipboard:/home/pundrew/scripts/rofi/cliphist-rofi-img -show clipboard -show-icons" ; }
+    Mod+Space { spawn-sh "/home/pundrew/scripts/niri/scratchpad/launch-scratchpad.sh"; }
 
     // quick default 
     Mod+Alt+Shift+Return { spawn-sh "niri msg action focus-workspace SMTK; niri msg action focus-workspace 'Streaming and Recording'; niri msg action focus-workspace Dev" ; }
@@ -31,35 +31,35 @@ binds {
     // connect/disconnect bose headphones
     Mod+Alt+Shift+Delete { spawn-sh "sudo /home/pundrew/.dotfiles/scripts/scripts/bose/bose-connect.sh" ; }
 
-    // move window to scratchpad
-    Mod+Shift+Backspace { spawn-sh "niri msg action move-window-to-workspace scratch --focus=false" ; }
+    // move window to scratchpad (only if tracked) or bring back most recent
+    Mod+Shift+Backspace { spawn "/home/pundrew/scripts/niri/scratchpad/niri-scratchpad.py" "--recent" "--multi-monitor" "--animations"; }
 
     // one-hand alternative bind of the above
-    Mod+Shift+Grave { spawn-sh "niri msg action move-window-to-workspace scratch --focus=false" ; }
-
-    // bring back most recent scratchpad window
-    Mod+Shift+Tab { spawn "/home/pundrew/.config/niri/scripts/scratchpad/niri-scratchpad.py" "--recent" "--multi-monitor"; }
+    Mod+Shift+Tab { spawn "/home/pundrew/scripts/niri/scratchpad/niri-scratchpad.py" "--recent" "--multi-monitor" "--animations"; }
 
     // switch between eng/kor and change to qwerty accordingly
     Ctrl+Space { spawn "/home/pundrew/.dotfiles/scripts/scripts/ime-kanata-toggle.sh"; }
 
     // terminal
-    Mod+Shift+1 { spawn "/home/pundrew/.config/niri/scripts/scratchpad/niri-scratchpad.py" "--app-id" "org.kde.konsole" "--spawn" "konsole" "--width" "1000" "--height" "800" "--multi-monitor"; }
+    Mod+Shift+1 { spawn "/home/pundrew/scripts/niri/scratchpad/niri-scratchpad.py" "--app-id" "org.kde.konsole" "--spawn" "konsole" "--multi-monitor" "--animations"; }
 
     // runelite
-    Mod+Shift+2 { spawn "/home/pundrew/.config/niri/scripts/scratchpad/niri-scratchpad.py" "--app-id" "net-runelite-client-RuneLite" "--multi-monitor"; }
+    Mod+Shift+2 { spawn "/home/pundrew/scripts/niri/scratchpad/niri-scratchpad.py" "--app-id" "net-runelite-client-RuneLite" "--multi-monitor" "--spawn" "/home/pundrew/scripts/launch-runelite-dev-build.sh" "--animations"; }
 
     // nautilus
-    Mod+Shift+3 { spawn "/home/pundrew/.config/niri/scripts/scratchpad/niri-scratchpad.py" "--app-id" "org.gnome.Nautilus" "--multi-monitor"; }
+    Mod+Shift+3 { spawn "/home/pundrew/scripts/niri/scratchpad/niri-scratchpad.py" "--app-id" "org.gnome.Nautilus" "--multi-monitor" "--animations"; }
+
+    // kakaotalk
+    Mod+Shift+4 { spawn "/home/pundrew/scripts/niri/scratchpad/niri-scratchpad.py" "--app-id" "kakaotalk.exe" "--multi-monitor" "--animations"; }
 
     // spotify
-    Mod+Shift+4 { spawn "/home/pundrew/.config/niri/scripts/scratchpad/niri-scratchpad.py" "--app-id" "Spotify" "--multi-monitor"; }
+    Mod+Shift+5 { spawn "/home/pundrew/scripts/niri/scratchpad/niri-scratchpad.py" "--app-id" "Spotify" "--multi-monitor" "--animations"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
     // Using spawn-sh allows to pass multiple arguments together with the command.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "swayosd-client --output-volume +5 --max-volume 200"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "swayosd-client --output-volume -5 --max-volume 200"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "swayosd-client --output-volume +5 --max-volume 100"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "swayosd-client --output-volume -5 --max-volume 100"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "swayosd-client --output-volume mute-toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
@@ -89,11 +89,11 @@ binds {
 
     Mod+P { spawn-sh "konsole --hold -e 'niri msg pick-window'";}
 
-    Mod+WheelScrollUp   { set-zoom-level "+0.5"; }
-    Mod+WheelScrollDown { set-zoom-level "-0.5"; }
+    // Mod+WheelScrollUp   { set-zoom-level "+0.5"; }
+    // Mod+WheelScrollDown { set-zoom-level "-0.5"; }
 
     // trigger script to retain window's tiled position when coming out of fullscreen
-    Mod+Shift+Ctrl+Backspace { spawn-sh "/home/pundrew/.config/niri/scripts/nfsm/nfsm-cli.sh"; }
+    Mod+Shift+Ctrl+Backspace { spawn-sh "/home/pundrew/scripts/niri/nfsm/nfsm-cli.sh"; }
 
     // Keybinds to swap windows
     Mod+Alt+Left {swap-window-left; } 

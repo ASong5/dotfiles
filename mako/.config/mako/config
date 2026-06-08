@@ -16,7 +16,7 @@ default-timeout=0
 ignore-timeout=1
 #output=DP-1
 anchor=top-center
-on-notify=exec /home/pundrew/.config/mako/scripts/mako-progress-updater.sh "${id}"
+on-notify=exec /home/pundrew/scripts/mako/mako-progress-updater.sh "${id}"
 
 [app-name=Spotify]
 #output=DP-1

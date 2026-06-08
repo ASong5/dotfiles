@@ -1,0 +1,17 @@
+{
+  "DP-1": {
+    "org.kde.konsole": {"width": 1000, "height": 800},
+    "org.gnome.Nautilus": {"width": 1300, "height": 1000},
+    "Spotify": {"width": 1100, "height": 1200}
+  },
+  "HDMI-A-1": {
+    "org.kde.konsole": {"width": 800, "height": 600},
+    "org.gnome.Nautilus": {"width": 1000, "height": 700},
+    "Spotify": {"width": 700, "height": 900}
+  },
+  "DP-2": {
+    "org.kde.konsole": {"width": 600, "height": 750},
+    "org.gnome.Nautilus": {"width": 900, "height": 900},
+    "Spotify": {"width": 600, "height": 1200}
+  }
+}

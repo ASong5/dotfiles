@@ -22,7 +22,8 @@ while true; do
 
     if $win1_seen && $win2_seen; then
         echo "Both windows detected! Launching OBS..."
-        flatpak run com.obsproject.Studio --startreplaybuffer --disable-shutdown-check &
+        # flatpak run com.obsproject.Studio --startreplaybuffer --disable-shutdown-check &
+        flatpak run com.obsproject.Studio --disable-shutdown-check &
         exit 0
     fi
 

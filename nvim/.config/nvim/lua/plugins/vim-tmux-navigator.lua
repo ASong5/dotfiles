@@ -16,11 +16,11 @@ return {
     keys = function()
         if os.getenv("TMUX") then
             return {
-                { "<C-Left>",  "<cmd>TmuxNavigateLeft<CR>",     silent = true },
-                { "<C-Down>",  "<cmd>TmuxNavigateDown<CR>",     silent = true },
-                { "<C-Up>",    "<cmd>TmuxNavigateUp<CR>",       silent = true },
-                { "<C-Right>", "<cmd>TmuxNavigateRight<CR>",    silent = true },
-                { "<C-\\>",    "<cmd>TmuxNavigatePrevious<CR>", silent = true },
+                { "<C-h>",  "<cmd>TmuxNavigateLeft<CR>",     silent = true },
+                { "<C-j>",  "<cmd>TmuxNavigateDown<CR>",     silent = true },
+                { "<C-k>",  "<cmd>TmuxNavigateUp<CR>",       silent = true },
+                { "<C-l>",  "<cmd>TmuxNavigateRight<CR>",    silent = true },
+                { "<C-\\>", "<cmd>TmuxNavigatePrevious<CR>", silent = true },
             }
         else
             return {

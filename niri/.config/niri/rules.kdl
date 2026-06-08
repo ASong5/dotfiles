@@ -5,13 +5,25 @@ window-rule {
 }
 
 // Border for screen-casted windows
-// window-rule {
-//     match is-window-cast-target=true
-//     focus-ring {
-//         active-color "#ff0000"
-//         inactive-color "#ff0000"
-//     }
-// }
+window-rule {
+    match is-window-cast-target=true
+    focus-ring {
+        active-gradient from="#ff0000" to="#00ff99" angle=180 
+        inactive-gradient from="#ff0000" to="#ffff00" angle=180 
+    }
+}
+
+window-rule {
+    match app-id="vlc"
+    open-floating true
+}
+
+window-rule {
+    match app-id="org.kde.konsole"
+    background-effect {
+        blur true
+    }
+}
 
 window-rule {
     match title=r#"RuneLite.*"# app-id="net-runelite-client-RuneLite"
@@ -19,6 +31,12 @@ window-rule {
     open-floating true
     open-focused true
     // opacity 0.2
+}
+
+
+window-rule {
+    match app-id="com.gabm.satty"
+    open-floating true
 }
 
 window-rule {
@@ -37,7 +55,6 @@ window-rule {
     open-maximized true
 }
 
-
 window-rule {
     match title=r#"(?i)steam"#
     open-on-workspace "Games"
@@ -46,15 +63,15 @@ window-rule {
 // KakaoTalk notifications
 // todo: block out from screen-capture
 window-rule {
-    match app-id="steam_app_default" title=""
-    default-floating-position x=10 y=-20 relative-to="bottom-right"
+    match app-id="kakaotalk.exe" title=r#"$^"#
+    default-floating-position x=10 y=200 relative-to="bottom-right"
     open-focused false
     open-on-output "DP-1"
 }
 
 window-rule {
     match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
-    default-floating-position x=10 y=-40 relative-to="bottom-right"
+    default-floating-position x=10 y=20 relative-to="bottom-right"
     open-focused false 
     block-out-from "screencast"
     open-on-output "DP-1"
@@ -123,22 +140,17 @@ window-rule {
     open-floating true
     open-on-workspace "scratch"
     open-focused false
-    min-width 1170
-    max-width 1170
-    min-height 1200
-    max-height 1200
 }
 
 window-rule {
     match app-id="org.gnome.Nautilus"
     open-floating true
     open-focused true
-    min-width 1440
-    max-width 1440
-    min-height 1130
-    max-height 1130
 }
 
 layer-rule {
-    match namespace="rofi"
+    match namespace="^rofi$"
+
+    baba-is-float true
+
 }

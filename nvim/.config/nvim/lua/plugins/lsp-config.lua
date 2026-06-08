@@ -18,6 +18,7 @@ return {
 					"ts_ls",
 					"ruff",
 					"pyright",
+                    "gopls",
 				},
 				automatic_enable = {
 					exclude = {
@@ -62,6 +63,9 @@ return {
 			lsp.config("bashls", {
 				capabilities = capabilities,
 			})
+            lsp.config("gopls", {
+                capabilities = capabilities,
+            })
 			lsp.config("pyright", {
 				capabilities = capabilities,
 				settings = {

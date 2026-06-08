@@ -1,25 +1,25 @@
 #!/usr/bin/env bash
 tmp_dir="/tmp/cliphist"
-rm -rf "$tmp_dir"
+mkdir -p "$tmp_dir"
 
 if [[ -n "$1" ]]; then
     if [[ -n "$ROFI_INFO" ]]; then
-        reconstucted_line="${ROFI_INFO}"$'\t'"${1}"
-        cliphist decode <<<"$reconstucted_line" | wl-copy
+        cliphist decode <<<"${ROFI_INFO}"$'\t'"${1}" | wl-copy
     else
         cliphist decode <<<"$1" | wl-copy
     fi
     exit
 fi
 
-mkdir -p "$tmp_dir"
-
 read -r -d '' prog <<EOF
 /^[0-9]+\s<meta http-equiv=/ { next }
 match(\$0, /^([0-9]+)\s(\[\[\s)?binary.*(jpg|jpeg|png|bmp)/, grp) {
-    system("echo " grp[1] "\\\\\t | cliphist decode >$tmp_dir/"grp[1]"."grp[3])
+    outfile = "$tmp_dir/" grp[1] "." grp[3]
+    if (system("test -f " outfile) != 0) {
+        system("echo " grp[1] "\\\\\t | cliphist decode >" outfile)
+    }
     preview = substr(\$0, index(\$0, \$2))
-    print preview"\0info\x1f"grp[1]"\x1ficon\x1fthumbnail://$tmp_dir/"grp[1]"."grp[3]
+    print preview"\0info\x1f"grp[1]"\x1ficon\x1fthumbnail://"outfile
     next
 }
 {

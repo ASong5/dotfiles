@@ -1,7 +1,8 @@
 @theme "/dev/null"
 * {
-	bg: #181E27;
-	background-color: @bg;
+	// bg: #181E27;
+	// background-color: @bg;
+    background-color: transparent;
 }
 
 window { 
@@ -9,9 +10,12 @@ window {
     height: 35%;
     font: "JetBrainsMono Nerd Font 12";
 	orientation: vertical;
-	border-color: #74adc0;
+	border-color: #89b4fa;
+    border: 7px;
+    border-radius: 15px;
     expand: true;
     children: [inputbar, listview-split];
+    background-color: rgba(36, 39, 58, 0.5);
 }
 
 // ELEMENT
@@ -24,6 +28,10 @@ element {
 
 element selected {
 	background-color: #74adc0;
+}
+
+element normal.active {
+    text-color: #f38ba8;
 }
 
 element-text {
@@ -50,7 +58,6 @@ listview {
 	fixed-height: true;
 	fixed-columns: true;
 	fixed-lines: true;
-	border: 0 10 6 10;
     cycle: true;
 }
 

@@ -3,8 +3,9 @@
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-spawn-sh-at-startup "python3 /home/pundrew/.config/niri/scripts/nfsm/nfsm.py &"
-spawn-sh-at-startup "/home/pundrew/.config/niri/scripts/launch_obs_when_ready.sh &"
+spawn-sh-at-startup "python3 /home/pundrew/scripts/niri/nfsm/nfsm.py &"
+spawn-sh-at-startup "/home/pundrew/scripts/niri/launch_obs_when_ready.sh &"
+spawn-sh-at-startup "/home/pundrew/scripts/kanata-auto-switch-layouts.sh &"
 spawn-at-startup "hyprpaper"
 spawn-at-startup "swayosd-server &"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store &"
@@ -13,7 +14,6 @@ spawn-at-startup "fcitx5"
 spawn-at-startup "konsole"
 spawn-sh-at-startup "flatpak run com.discordapp.Discord "
 spawn-sh-at-startup "flatpak run org.localsend.localsend_app"
-spawn-at-startup "/home/pundrew/firefox/firefox/firefox"
 spawn-at-startup "steam"
 spawn-at-startup "gtk-launch net.lutris.Lutris"
 spawn-at-startup "/usr/bin/showmethekey-gtk"

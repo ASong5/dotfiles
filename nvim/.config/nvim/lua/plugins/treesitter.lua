@@ -19,6 +19,7 @@ return {
                 "kdl",
                 "markdown",
                 "rust",
+                "go",
             },
             highlight = { enable = true },
             indent = { enable = true },
